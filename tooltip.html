@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Tooltips</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+		<style>	
+
+			body {
+				background: #282827 url('pattern-2.png') repeat top left;
+				margin-top:100px;
+			}
+
+			h1 {
+				color: #FFF;
+				font-size: 36px;
+				font-family: Arial;
+			}
+
+			.tooltip-container {
+				width: 600px;
+				margin: 0px auto;
+				position: relative;
+				text-align: center;
+				margin-bottom: 50px;
+			}
+
+
+			.settings-button {
+				width: 36px;
+				height: 28px;
+				border-radius: 5px;		
+				border: 1px solid #161615; 
+				box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
+				opacity: 0.7;
+				background-color: #343433;
+				margin: 0px auto;
+				z-index: 2;
+				display: block;
+			}
+
+			.settings-button:hover, .pressed {
+				background-color: transparent;
+				opacity: 1;
+				cursor: pointer;
+				z-index: 2;
+			}
+
+			.settings-button img {
+				margin: 5px auto 0px auto;
+				display: block;
+				z-index: -1;
+			}
+
+			.settings-button span {
+				background: transparent url('icon-cog-small.png') no-repeat top left;
+				width: 19px;
+				height: 18px;
+				display: block;
+				margin: 5px auto 0px auto;
+			}
+	
+
+		</style>
+
+
+
+
+		<link href="tooltips.css" rel="stylesheet">
+		<!--[if gte IE 9]>
+		  <style type="text/css">
+		    .gradient {
+		       filter: none !important;
+		    }
+
+			.tool-container.tool-top {
+				border-bottom: none;
+			}
+
+		  </style>
+		<![endif]-->
+
+		<link href="bootstrap.css" rel="stylesheet"> 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="jquery.tooltip.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				
+				$('#normal-button').tooltip({content: '#user-options', position: 'top'});
+				$('#normal-button-small').tooltip({content: '#user-options-small', position: 'top'});
+				$('#button-left').tooltip({content: '#user-options', position: 'left'});
+			});
+		</script>
+	</head>
+	<body>
+		<div class="tooltip-container normal">
+			<h1>Tooltip Toolbar</h1>
+			<div id="normal-button" class="settings-button"><img src="icon-cog-small.png" /></div>
+			<br/><br/><br/>
+			<div id="normal-button-small" class="settings-button"><img src="icon-cog-small.png" /></div>
+
+						<br/><br/><br/><br/><br/><br/>
+			<a id="button-left" class="settings-button"><span></span></a>
+		</div>
+
+		<div id="user-options-small" style="display: none;">
+			<a href="#"><i class="icon-lock"></i></a>
+			<a href="#"><i class="icon-play-circle"></i></a>
+			<a href="#"><i class="icon-text-width"></i></a>
+		</div>	
+
+		<div id="user-options" style="display: none;">
+			<a href="#"><i class="icon-lock"></i></a>
+			<a href="#"><i class="icon-play-circle"></i></a>
+			<a href="#"><i class="icon-text-width"></i></a>
+			<a href="#"><i class="icon-inbox"></i></a>
+			<a href="#"><i class="icon-tasks"></i></a>
+		</div>		
+	</body>
+</html>
