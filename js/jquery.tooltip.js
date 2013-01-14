@@ -57,9 +57,6 @@ if ( typeof Object.create !== 'function' ) {
             var self = this;
             var location = self.tooltip.find('.tool-items');
             var content = $(self.options.content).clone().find('a').addClass('tool-item gradient');
-
-            console.log(content);
-
             location.html(content);            
         },
         
@@ -108,7 +105,7 @@ if ( typeof Object.create !== 'function' ) {
                 animation.left = '-=20';
             }            
 
-            self.tooltip.animate(animation, 200 );
+            self.tooltip.show().animate(animation, 200 );
         },
 
         hide: function() {
@@ -125,7 +122,9 @@ if ( typeof Object.create !== 'function' ) {
             if(self.options.position == 'left') {
                 animation.left = '+=20';
             }             
-            self.tooltip.animate(animation, 200 );
+            self.tooltip.animate(animation, 200, function() {
+                self.tooltip.hide();
+            } );
         },        
 
     }

@@ -3,70 +3,10 @@
     <head>
 		<title>Tooltips</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-		<style>	
-
-			body {
-				background: #282827 url('pattern-2.png') repeat top left;
-				margin-top:100px;
-			}
-
-			h1 {
-				color: #FFF;
-				font-size: 36px;
-				font-family: Arial;
-			}
-
-			.tooltip-container {
-				width: 600px;
-				margin: 0px auto;
-				position: relative;
-				text-align: center;
-				margin-bottom: 50px;
-			}
-
-
-			.settings-button {
-				width: 36px;
-				height: 28px;
-				border-radius: 5px;		
-				border: 1px solid #161615; 
-				box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, .26), 0px 1px 0px 0px rgba(255, 255, 255, .15);
-				opacity: 0.7;
-				background-color: #343433;
-				margin: 0px auto;
-				z-index: 2;
-				display: block;
-			}
-
-			.settings-button:hover, .pressed {
-				background-color: transparent;
-				opacity: 1;
-				cursor: pointer;
-				z-index: 2;
-			}
-
-			.settings-button img {
-				margin: 5px auto 0px auto;
-				display: block;
-				z-index: -1;
-			}
-
-			.settings-button span {
-				background: transparent url('icon-cog-small.png') no-repeat top left;
-				width: 19px;
-				height: 18px;
-				display: block;
-				margin: 5px auto 0px auto;
-			}
-	
-
-		</style>
-
-
-
-
-		<link href="tooltips.css" rel="stylesheet">
+		<link href="css/documentation.css" rel="stylesheet" />
+		<link href="css/tooltips.css" rel="stylesheet" />
+		<link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
+		
 		<!--[if gte IE 9]>
 		  <style type="text/css">
 		    .gradient {
@@ -80,41 +20,231 @@
 		  </style>
 		<![endif]-->
 
-		<link href="bootstrap.css" rel="stylesheet"> 
+		<link href="css/bootstrap.css" rel="stylesheet"> 
+		<link href="css/prettify.css" rel="stylesheet"> 
+		<link href="css/sunburst.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src="jquery.tooltip.js"></script>
+		<script src="js/prettify.js"></script>
+		<script src="js/jquery.tooltip.js"></script>
+		
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				
 				$('#normal-button').tooltip({content: '#user-options', position: 'top'});
 				$('#normal-button-small').tooltip({content: '#user-options-small', position: 'top'});
 				$('#button-left').tooltip({content: '#user-options', position: 'left'});
 			});
 		</script>
 	</head>
-	<body>
+	<body onload="prettyPrint()" >
+		<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 		<div class="tooltip-container normal">
-			<h1>Tooltip Toolbar</h1>
-			<div id="normal-button" class="settings-button"><img src="icon-cog-small.png" /></div>
-			<br/><br/><br/>
-			<div id="normal-button-small" class="settings-button"><img src="icon-cog-small.png" /></div>
+			<header>
+				<h1>Toolbar</h1>
+				<p>A jQuery plugin that creates contextual tooltip style toolbars</p>
+				<iframe class="twitter-share-button" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?size=m&amp;text=jQuery%20PowerTip%20-%20Sleek%20modern%20tooltips%20for%20jQuery&amp;url=http%3A%2F%2Fstevenbenner.github.com%2Fjquery-powertip%2F&amp;hashtags=jquery%2Cjavascript&amp;via=stevenbenner" style="width:90px; height:28px;"></iframe>
+				<br/><br/>
+			</header>
+			<section>
+				<p>Toolbar allows you to quickly create tooltip style toolbars for use in web applications and websites. The toolbar is easily customisable using the twitter bootstrap icons and provides flexability around the toolbars display and number of icons. Toolbar is actively being developed to continue to provide a great user experience.</p>
+			
+				<a class="btn btn-large btn-success"><i class="icon-download icon-white"></i> Download</a>
 
-						<br/><br/><br/><br/><br/><br/>
+			</section>
+
+
+
+
+			<section>
+				<h2>Features</h2>
+				<ul>
+					<li>Feature One</li>
+					<li>Feature Two</li>
+					<li>Feature Three</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Examples</h2>
+			
+				<div class="example">
+					<p>Horizontal toolbar</p>
+					<section class="left">
+						<div id="normal-button" class="settings-button"><img src="img/icon-cog-small.png" /></div>
+					</section>
+					<section class="right">
+<span>JS</span>
+<pre class="prettyprint">
+$('#normal-button').tooltip({
+	content: '#user-options', 
+	position: 'top'
+});</pre>
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-inbox"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-tasks"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+
+					</section>
+					<div class="clear"></div>
+				</div>
+
+				<div class="example">
+					<p>Horizontal toolbar with three items</p>	
+					<section class="left">
+						<div id="normal-button-small" class="settings-button"><img src="img/icon-cog-small.png" /></div>
+					</section>
+					<section class="right">
+<span>JS</span>						
+<pre class="prettyprint">
+$('#normal-button').tooltip({
+	content: '#user-options', 
+	position: 'top'
+});</pre>
+
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+
+</section>
+<div class="clear"></div>
+</div>
+
+			
+			<div class="example">
+				<p>Vertical toolbar</p>
+			
+				<section class="left">
+			
 			<a id="button-left" class="settings-button"><span></span></a>
+		</section>
+							<section class="right">
+<span>JS</span>
+<pre class="prettyprint">
+$('#normal-button').tooltip({
+	content: '#user-options', 
+	position: 'left'
+});</pre>
+
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+
+</section>
+<div class="clear"></div>
+			</div>
+
+			<div class="example">
+				<p>Horizontal toolbar trigger by a link</p>
+				<section class="left">
+					<div id="normal-button" class="settings-button"><img src="img/icon-cog-small.png" /></div>
+				</section>
+				<section class="right">
+<span>JS</span>					
+<pre class="prettyprint">
+$('#normal-button').tooltip({
+	content: '#user-options', 
+	position: 'top'
+});</pre>
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-inbox"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-tasks"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+
+</section>
+<div class="clear"></div>
+		</div>
+</section>
+<section>
+			<h2>Usage</h2>
+
+			<p>Include the plugin javascript file along with jquery</p>
+<pre class="prettyprint">
+&lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script src="js/jquery.tooltip.js"&gt;&lt;/script&gt;
+</pre>
+
+
+			<p>Include the css files</p>
+<pre class="prettyprint">
+&lt;link href="css/tooltips.css" rel="stylesheet" /&gt;
+&lt;link href="css/bootstrap.css" rel="stylesheet" /&gt;
+</pre>
+
+<p>Define your toolbar HTML</p>
+<pre class="prettyprint">
+&lt;div id="user-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-inbox"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-tasks"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+
+<p>Attach the toolbar to a button/link, whatever you want really</p>
+<pre class="prettyprint">
+$('#normal-button').tooltip(options);
+</pre>
+</section>
+
+<section>
+<h2>Options</h2>
+<ul>
+	<li>
+		Content
+		<p>The id of the div containing the icons.</p>
+	</li>
+	<li>
+		Position
+		<p>Indicate the position of the toobar relative to the element its attached agaisnt. Select either 'Top' or 'Left'.</p>
+	</li>
+</ul>
+
+
+</section>
+
+<footer>
+
+	<p>Built by Paul Kinzett | Released under the MIT license | Fork this project from the GitHub repository.</p>
+
+</footer>
+
+
 		</div>
 
 		<div id="user-options-small" style="display: none;">
-			<a href="#"><i class="icon-lock"></i></a>
-			<a href="#"><i class="icon-play-circle"></i></a>
-			<a href="#"><i class="icon-text-width"></i></a>
+			<a href="#"><i class="icon-align-left"></i></a>
+			<a href="#"><i class="icon-align-center"></i></a>
+			<a href="#"><i class="icon-align-right"></i></a>
 		</div>	
 
 		<div id="user-options" style="display: none;">
-			<a href="#"><i class="icon-lock"></i></a>
-			<a href="#"><i class="icon-play-circle"></i></a>
-			<a href="#"><i class="icon-text-width"></i></a>
-			<a href="#"><i class="icon-inbox"></i></a>
-			<a href="#"><i class="icon-tasks"></i></a>
+			<a href="#"><i class="icon-user"></i></a>
+			<a href="#"><i class="icon-star"></i></a>
+			<a href="#"><i class="icon-edit"></i></a>
+			<a href="#"><i class="icon-trash"></i></a>
+			<a href="#"><i class="icon-ban-circle"></i></a>
 		</div>		
 	</body>
 </html>
