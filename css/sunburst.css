@@ -22,7 +22,7 @@ pre.prettyprint, code.prettyprint {
 
 pre.prettyprint {
         width: 95%;
-        margin: 0 auto 1em auto;
+        margin: 0.3em auto 1em auto;
         padding: 1em;
         white-space: pre-wrap;
 }

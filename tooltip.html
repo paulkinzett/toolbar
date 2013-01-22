@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>Tooltips</title>
+		<title>Toolbar</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link href="css/documentation.css" rel="stylesheet" />
-		<link href="css/tooltips.css" rel="stylesheet" />
+		<link href="css/toolbars.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
 		
 		<!--[if gte IE 9]>
@@ -20,18 +20,19 @@
 		  </style>
 		<![endif]-->
 
-		<link href="css/bootstrap.css" rel="stylesheet"> 
+		<link href="css/bootstrap.icons.css" rel="stylesheet"> 
 		<link href="css/prettify.css" rel="stylesheet"> 
 		<link href="css/sunburst.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="js/prettify.js"></script>
-		<script src="js/jquery.tooltip.js"></script>
+		<script src="js/jquery.toolbar.js"></script>
 		
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				$('#normal-button').tooltip({content: '#user-options', position: 'top'});
-				$('#normal-button-small').tooltip({content: '#user-options-small', position: 'top'});
-				$('#button-left').tooltip({content: '#user-options', position: 'left'});
+				$('#normal-button').toolbar({content: '#user-options', position: 'top'});
+				$('#normal-button-small').toolbar({content: '#user-options-small', position: 'top'});
+				$('#button-left').toolbar({content: '#user-options', position: 'left'});
+				$('#link-toolbar').toolbar({content: '#user-options', position: 'top'});
 			});
 		</script>
 	</head>
@@ -40,26 +41,22 @@
 		<div class="tooltip-container normal">
 			<header>
 				<h1>Toolbar</h1>
-				<p>A jQuery plugin that creates contextual tooltip style toolbars</p>
-				<iframe class="twitter-share-button" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?size=m&amp;text=jQuery%20PowerTip%20-%20Sleek%20modern%20tooltips%20for%20jQuery&amp;url=http%3A%2F%2Fstevenbenner.github.com%2Fjquery-powertip%2F&amp;hashtags=jquery%2Cjavascript&amp;via=stevenbenner" style="width:90px; height:28px;"></iframe>
+				<p>A jQuery plugin that creates tooltip style toolbars</p>
+				<iframe class="twitter-share-button" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?size=m&amp;text=Toolbar: Mordern toolbar plugin for jQuery&amp;url=https://github.com/paulkinzett/toolbar-tooltip&amp;hashtags=jquery%2Cjavascript&amp;via=paul_kinzett" style="width:90px; height:28px;"></iframe>
 				<br/><br/>
 			</header>
 			<section>
-				<p>Toolbar allows you to quickly create tooltip style toolbars for use in web applications and websites. The toolbar is easily customisable using the twitter bootstrap icons and provides flexability around the toolbars display and number of icons. Toolbar is actively being developed to continue to provide a great user experience.</p>
-			
+				<p>Toolbar allows you to quickly create tooltip style toolbars for use in web applications and websites. The toolbar is easily customisable using the twitter bootstrap icons and provides flexability around the toolbars display and number of icons.</p>	
 				<a class="btn btn-large btn-success"><i class="icon-download icon-white"></i> Download</a>
-
 			</section>
-
-
-
 
 			<section>
 				<h2>Features</h2>
 				<ul>
-					<li>Feature One</li>
-					<li>Feature Two</li>
-					<li>Feature Three</li>
+					<li>Straightforward implementation with simple options</li>
+					<li>Can run as many toolbars as required</li>
+					<li>Toolbars can be attached to any element required</li>
+					<li>Toobar icons are easily customised through the popular twitter bootstrap framework</li>
 				</ul>
 			</section>
 
@@ -151,7 +148,7 @@ $('#normal-button').tooltip({
 			<div class="example">
 				<p>Horizontal toolbar trigger by a link</p>
 				<section class="left">
-					<div id="normal-button" class="settings-button"><img src="img/icon-cog-small.png" /></div>
+					<a id="link-toolbar" class="demo-link">Options</a>
 				</section>
 				<section class="right">
 <span>JS</span>					
@@ -176,22 +173,24 @@ $('#normal-button').tooltip({
 		</div>
 </section>
 <section>
-			<h2>Usage</h2>
 
-			<p>Include the plugin javascript file along with jquery</p>
+<h2>Usage</h2>
+
+<span>Include the plugin javascript file along with jquery</span>
 <pre class="prettyprint">
 &lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
 &lt;script src="js/jquery.tooltip.js"&gt;&lt;/script&gt;
 </pre>
+<br/>
 
-
-			<p>Include the css files</p>
+<span>Include the css files</span>
 <pre class="prettyprint">
 &lt;link href="css/tooltips.css" rel="stylesheet" /&gt;
 &lt;link href="css/bootstrap.css" rel="stylesheet" /&gt;
 </pre>
+<br/>
 
-<p>Define your toolbar HTML</p>
+<span>Define your toolbar HTML</span>
 <pre class="prettyprint">
 &lt;div id="user-options"&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
@@ -201,27 +200,30 @@ $('#normal-button').tooltip({
 	&lt;a href="#"&gt;&lt;i class="icon-tasks"&gt;&lt;/i&gt;&lt;/a&gt;
 &lt;/div&gt;	
 </pre>
+<br/>
 
-<p>Attach the toolbar to a button/link, whatever you want really</p>
+<span>Attach the toolbar to an element passing in your options as an object. Available options are detailed below.</span>
 <pre class="prettyprint">
-$('#normal-button').tooltip(options);
+$('#normal-button').tooltip( options );
 </pre>
+
+<br/>
+<span>The element that triggers the toolbar will gain the class <code>.pressed</code> when the toolbar is visable.</span>
+
 </section>
 
 <section>
-<h2>Options</h2>
-<ul>
-	<li>
-		Content
-		<p>The id of the div containing the icons.</p>
-	</li>
-	<li>
-		Position
-		<p>Indicate the position of the toobar relative to the element its attached agaisnt. Select either 'Top' or 'Left'.</p>
-	</li>
-</ul>
-
-
+	<h2>Options</h2>
+	<ul>
+		<li>
+			Content
+			<p>The id of the element containing the icons.</p>
+		</li>
+		<li>
+			Position
+			<p>Indicates the display position of the toobar relative to the element its attached agaisnt. Select either 'Top' or 'Left'.</p>
+		</li>
+	</ul>
 </section>
 
 <footer>
