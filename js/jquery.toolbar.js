@@ -22,7 +22,8 @@ if ( typeof Object.create !== 'function' ) {
             .append('<div class="tool-items" />')
             .append('<div class="arrow" />')
             .appendTo('body')
-            .css('opacity', 0);                     
+            .css('opacity', 0)
+            .hide();                     
 
             self.initializeToolbar();
         },
@@ -56,7 +57,7 @@ if ( typeof Object.create !== 'function' ) {
         populateContent: function() {
             var self = this;
             var location = self.toolbar.find('.tool-items');
-            var content = $(self.options.content).clone().find('a').addClass('tool-item gradient');
+            var content = $(self.options.content).clone( true ).find('a').addClass('tool-item gradient');
             location.html(content);            
         },
         
@@ -105,7 +106,26 @@ if ( typeof Object.create !== 'function' ) {
                 animation.left = '-=20';
             }            
 
+            self.bindHideEvent();
+
             self.toolbar.show().animate(animation, 200 );
+        },
+
+
+        bindHideEvent: function() {
+
+            var self = this;
+            
+            var hideEvent = "click.toolbar";
+
+            if(self.options.hideOnClick) {
+                $('html').off(hideEvent).on(hideEvent, function( event ) {
+                    if(self.toolbar.has(event.target).length === 0 ) {
+                        self.hide();
+                    }
+                });     
+            }             
+
         },
 
         hide: function() {
@@ -138,7 +158,8 @@ if ( typeof Object.create !== 'function' ) {
     
     $.fn.toolbar.options = {
         content: '#myContent',
-        position: 'top'
+        position: 'top',
+        hideOnClick: false
     };    
     
     

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>Toolbar</title>
+		<title>Toolbar.js - jQuery plugin to create tooltip style toobars</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link href="css/documentation.css" rel="stylesheet" />
 		<link href="css/toolbars.css" rel="stylesheet" />
@@ -29,25 +29,33 @@
 		
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
+				
+				// Define any icon actions before calling the toolbar 
+				$('.toolbar-icons a').on('click', function( event ) {
+					event.preventDefault(); 
+				});
+
+
 				$('#normal-button').toolbar({content: '#user-options', position: 'top'});
-				$('#normal-button-small').toolbar({content: '#user-options-small', position: 'top'});
+				$('#normal-button-small').toolbar({content: '#user-options-small', position: 'top', hideOnClick: true});
 				$('#button-left').toolbar({content: '#user-options', position: 'left'});
 				$('#link-toolbar').toolbar({content: '#user-options', position: 'top'});
+
 			});
 		</script>
 	</head>
 	<body onload="prettyPrint()" >
-		<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+		<a href="https://github.com/paulkinzett/toolbar-tooltip"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 		<div class="tooltip-container normal">
 			<header>
-				<h1>Toolbar</h1>
+				<h1>Toolbar.Js</h1>
 				<p>A jQuery plugin that creates tooltip style toolbars</p>
 				<iframe class="twitter-share-button" allowtransparency="true" frameborder="0" scrolling="no" src="https://platform.twitter.com/widgets/tweet_button.html?size=m&amp;text=Toolbar: Mordern toolbar plugin for jQuery&amp;url=https://github.com/paulkinzett/toolbar-tooltip&amp;hashtags=jquery%2Cjavascript&amp;via=paul_kinzett" style="width:90px; height:28px;"></iframe>
 				<br/><br/>
 			</header>
 			<section>
 				<p>Toolbar allows you to quickly create tooltip style toolbars for use in web applications and websites. The toolbar is easily customisable using the twitter bootstrap icons and provides flexability around the toolbars display and number of icons.</p>	
-				<a class="btn btn-large btn-success"><i class="icon-download icon-white"></i> Download</a>
+				<p class="download"><a class="btn btn-large btn-success"><i class="icon-download icon-white"></i> Download</a></p>
 			</section>
 
 			<section>
@@ -57,6 +65,7 @@
 					<li>Can run as many toolbars as required</li>
 					<li>Toolbars can be attached to any element required</li>
 					<li>Toobar icons are easily customised through the popular twitter bootstrap framework</li>
+					<li>Toolbars are responsive and follow the element on resize</li>
 				</ul>
 			</section>
 
@@ -71,18 +80,18 @@
 					<section class="right">
 <span>JS</span>
 <pre class="prettyprint">
-$('#normal-button').tooltip({
-	content: '#user-options', 
+$('#user-toolbar').tooltip({
+	content: '#user-toolbar-options', 
 	position: 'top'
 });</pre>
 <span>HTML</span>
 <pre class="prettyprint">
-&lt;div id="user-options"&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-inbox"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-tasks"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
 &lt;/div&gt;	
 </pre>
 
@@ -98,17 +107,18 @@ $('#normal-button').tooltip({
 					<section class="right">
 <span>JS</span>						
 <pre class="prettyprint">
-$('#normal-button').tooltip({
-	content: '#user-options', 
-	position: 'top'
+$('#format-toolbar').tooltip({
+	content: '#format-toolbar-options', 
+	position: 'top',
+	hideOnClick: true
 });</pre>
 
 <span>HTML</span>
 <pre class="prettyprint">
-&lt;div id="user-options"&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;div id="format-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
 &lt;/div&gt;	
 </pre>
 
@@ -127,20 +137,21 @@ $('#normal-button').tooltip({
 							<section class="right">
 <span>JS</span>
 <pre class="prettyprint">
-$('#normal-button').tooltip({
-	content: '#user-options', 
+$('#vertical-toolbar').tooltip({
+	content: '#user-toolbar-options', 
 	position: 'left'
 });</pre>
 
 <span>HTML</span>
 <pre class="prettyprint">
-&lt;div id="user-options"&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
 &lt;/div&gt;	
 </pre>
-
 </section>
 <div class="clear"></div>
 			</div>
@@ -159,12 +170,12 @@ $('#normal-button').tooltip({
 });</pre>
 <span>HTML</span>
 <pre class="prettyprint">
-&lt;div id="user-options"&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-inbox"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-tasks"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
 &lt;/div&gt;	
 </pre>
 
@@ -192,56 +203,75 @@ $('#normal-button').tooltip({
 
 <span>Define your toolbar HTML</span>
 <pre class="prettyprint">
-&lt;div id="user-options"&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-lock"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-play-circle"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-text-width"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-inbox"&gt;&lt;/i&gt;&lt;/a&gt;
-	&lt;a href="#"&gt;&lt;i class="icon-tasks"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
 &lt;/div&gt;	
 </pre>
 <br/>
 
 <span>Attach the toolbar to an element passing in your options as an object. Available options are detailed below.</span>
 <pre class="prettyprint">
-$('#normal-button').tooltip( options );
+$('#element').toolbar( options );
 </pre>
 
 <br/>
-<span>The element that triggers the toolbar will gain the class <code>.pressed</code> when the toolbar is visable.</span>
+
+<h3>Notes</h3>
+
+<ul>
+	<li>The element that triggers the toolbar will gain the class <code>.pressed</code> when the toolbar is visable.</li>
+	<li>Define any javascript for icon actions before calling the toolbar.</li>
+</ul>
 
 </section>
 
 <section>
 	<h2>Options</h2>
-	<ul>
-		<li>
-			Content
-			<p>The id of the element containing the icons.</p>
-		</li>
-		<li>
-			Position
-			<p>Indicates the display position of the toobar relative to the element its attached agaisnt. Select either 'Top' or 'Left'.</p>
-		</li>
-	</ul>
+	<table>
+		<thead>
+			<tr>
+				<th>Option</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>content</td>
+				<td>The id of the element containing the icons HTML.</td>
+			</tr>
+			<tr>
+				<td>position</td>
+				<td>Indicates the display position of the toobar relative to the element its attached agaisnt. Select either 'top' or 'left'. Default: top.</td>
+			</tr>
+			<tr>
+				<td>hideOnClick</td>
+				<td>Choose if you want the toolbar to hide when anywhere outside the toolbar is clicked. Default: false.</td>
+			</tr>			
+		</tbody>
+	</table>
+
 </section>
 
 <footer>
 
-	<p>Built by Paul Kinzett | Released under the MIT license | Fork this project from the GitHub repository.</p>
+	<p>Built by <a href="http://www.kinzett.co.nz">Paul Kinzett</a> | Released under the MIT license | Fork this project from the <a href="https://github.com/paulkinzett/toolbar-tooltip">GitHub repository</a>.</p>
 
 </footer>
 
 
 		</div>
 
-		<div id="user-options-small" style="display: none;">
-			<a href="#"><i class="icon-align-left"></i></a>
-			<a href="#"><i class="icon-align-center"></i></a>
-			<a href="#"><i class="icon-align-right"></i></a>
+		<div id="user-options-small" class="toolbar-icons" style="display: none;">
+			<a href=""><i class="icon-align-left"></i></a>
+			<a href=""><i class="icon-align-center"></i></a>
+			<a href=""><i class="icon-align-right"></i></a>
 		</div>	
 
-		<div id="user-options" style="display: none;">
+		<div id="user-options" class="toolbar-icons" style="display: none;">
 			<a href="#"><i class="icon-user"></i></a>
 			<a href="#"><i class="icon-star"></i></a>
 			<a href="#"><i class="icon-edit"></i></a>

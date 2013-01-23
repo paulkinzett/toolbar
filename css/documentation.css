@@ -21,6 +21,15 @@ h2 {
 	padding: 2px 0 5px 2px;
 }
 
+a {
+	color: #89CDE4;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 p {
 	color: #FFF;
 	display: block;
@@ -100,6 +109,10 @@ footer {
 	text-align: center;
 }
 
+.download {
+	text-align: center;
+}
+
 .btn:hover {
 	color: #333;
 	text-decoration: none;
@@ -113,10 +126,7 @@ footer {
 .btn {
 	border-color: #C5C5C5;
 	border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
-	margin-left: 200px;
 }
-
-
 
 .btn {
 	display: inline-block;
@@ -181,4 +191,29 @@ footer {
 .btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
 	color: white;
 	background-color: #51A351;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+
+th, td {
+	border: 1px solid #AAA;
+	padding: 6px;
+	font-size: 12px;
+	font-family: monospace;
+}
+
+th {
+	font-family: arial, helvetica, sans-serif;
+	font-size: 14px;
+}
+
+th, tr:nth-child(even) {
+	background-color: #444;
+}
+
+tr:nth-child(odd) {
+	background-color: #777;
 }
