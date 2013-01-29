@@ -4,7 +4,7 @@ A jQuery plugin that creates tooltip style toolbars.
 
 ## Documentation
 
-You can find the documentation for the toolbar at the following locations.
+You can find the documentation for the toolbar at the [toolbar project page][projectpage].
 
 [projectpage]: http://paulkinzett.github.com/toolbar/
 
