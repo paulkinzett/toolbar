@@ -36,8 +36,10 @@
 				});
 
 				$('#normal-button').toolbar({content: '#user-options', position: 'top'});
+				$('#normal-button-bottom').toolbar({content: '#user-options', position: 'bottom'});
 				$('#normal-button-small').toolbar({content: '#user-options-small', position: 'top', hideOnClick: true});
 				$('#button-left').toolbar({content: '#user-options', position: 'left'});
+				$('#button-right').toolbar({content: '#user-options', position: 'right'});
 				$('#link-toolbar').toolbar({content: '#user-options', position: 'top'});
 
 			});
@@ -71,7 +73,7 @@
 				<h2>Examples</h2>
 			
 				<div class="example">
-					<p>Horizontal toolbar</p>
+					<p>Horizontal toolbar Top</p>
 					<section class="left">
 						<div id="normal-button" class="settings-button"><img src="img/icon-cog-small.png" /></div>
 					</section>
@@ -81,6 +83,34 @@
 $('#user-toolbar').toolbar({
 	content: '#user-toolbar-options', 
 	position: 'top'
+});</pre>
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+
+					</section>
+					<div class="clear"></div>
+				</div>
+				
+				
+				<div class="example">
+					<p>Horizontal toolbar Bottom</p>
+					<section class="left">
+						<div id="normal-button-bottom" class="settings-button"><img src="img/icon-cog-small.png" /></div>
+					</section>
+					<section class="right">
+<span>JS</span>
+<pre class="prettyprint">
+$('#user-toolbar').toolbar({
+	content: '#user-toolbar-options', 
+	position: 'bottom'
 });</pre>
 <span>HTML</span>
 <pre class="prettyprint">
@@ -126,18 +156,47 @@ $('#format-toolbar').toolbar({
 
 			
 			<div class="example">
-				<p>Vertical toolbar</p>
+				<p>Vertical toolbar Left</p>
 			
 				<section class="left">
 			
 			<a id="button-left" class="settings-button"><span></span></a>
 		</section>
-							<section class="right">
+<section class="right">
 <span>JS</span>
 <pre class="prettyprint">
 $('#vertical-toolbar').toolbar({
 	content: '#user-toolbar-options', 
 	position: 'left'
+});</pre>
+
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+</section>
+<div class="clear"></div>
+			</div>
+			
+			<div class="example">
+				<p>Vertical toolbar Right</p>
+			
+				<section class="left">
+			
+			<a id="button-right" class="settings-button"><span></span></a>
+		</section>
+<section class="right">
+<span>JS</span>
+<pre class="prettyprint">
+$('#vertical-toolbar').toolbar({
+	content: '#user-toolbar-options', 
+	position: 'right'
 });</pre>
 
 <span>HTML</span>
