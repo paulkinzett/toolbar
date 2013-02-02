@@ -143,8 +143,26 @@ if ( typeof Object.create !== 'function' ) {
             	animation.top = '+=20';
                 break;
             }    
+            
+            self.bindHideEvent();
 
             self.toolbar.show().animate(animation, 200 );
+        },
+        
+        bindHideEvent: function() {
+
+            var self = this;
+            
+            var hideEvent = "click.toolbar";
+
+            if(self.options.hideOnClick) {
+                $('html').off(hideEvent).on(hideEvent, function( event ) {
+                    if(self.toolbar.has(event.target).length === 0 ) {
+                        self.hide();
+                    }
+                });     
+            }             
+
         },
 
         hide: function() {
@@ -186,7 +204,8 @@ if ( typeof Object.create !== 'function' ) {
     
     $.fn.toolbar.options = {
         content: '#myContent',
-        position: 'top'
+        position: 'top',
+        hideOnClick: false
     };    
     
     
