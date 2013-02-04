@@ -1,3 +1,18 @@
+/**
+ * Toolbar.js
+ *
+ * @fileoverview  jQuery plugin that creates tooltip style toolbars.
+ * @link          http://paulkinzett.github.com/tooltip-toolbar/
+ * @author        Paul Kinzett (http://kinzett.co.nz/)
+ * @version       1.0.2
+ * @requires      jQuery 1.7+
+ *
+ * @license jQuery Toolbar Plugin v1.0.2
+ * http://paulkinzett.github.com/tooltip-toolbar/
+ * Copyright 2013 Paul Kinzett (http://kinzett.co.nz/)
+ * Released under the MIT license.
+ * <https://raw.github.com/paulkinzett/tooltip-toolbar/master/LICENSE.txt>
+ */
 
 if ( typeof Object.create !== 'function' ) {
     Object.create = function( obj ) {
@@ -19,6 +34,7 @@ if ( typeof Object.create !== 'function' ) {
             self.options = $.extend( {}, $.fn.toolbar.options, options );
             self.toolbar = $('<div class="tool-container gradient" />')
             .addClass('tool-'+self.options.position)
+            .addClass('tool-rounded')
             .append('<div class="tool-items" />')
             .append('<div class="arrow" />')
             .appendTo('body')
@@ -72,18 +88,33 @@ if ( typeof Object.create !== 'function' ) {
         getCoordinates: function( position, adjustment) {
             var self = this; 
             self.coordinates = self.$elem.offset();
-            if(position == 'top') { 
+            
+            switch(self.options.position)
+            {
+            case 'top':
                 return coordinates = {
                     left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
                     top: self.coordinates.top-self.$elem.height()-adjustment,
                 }
-            }
-
-            if(position == 'left') { 
+            	break;
+            case 'left':
                 return coordinates = {
                     left: self.coordinates.left-(self.toolbar.width()/2)-(self.$elem.width()/2)-adjustment,
                     top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
                 }
+            	break;
+            case 'right':
+                return coordinates = {
+                    left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
+                    top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
+                }
+                break;
+            case 'bottom':
+                return coordinates = {
+                    left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
+                    top: self.coordinates.top+self.$elem.height()+adjustment,
+                }
+                break;
             }
 
         },
@@ -98,12 +129,20 @@ if ( typeof Object.create !== 'function' ) {
                 'opacity': 1,
             };
 
-            if(self.options.position == 'top') {
+            switch(self.options.position)
+            {
+            case 'top':
                 animation.top = '-=20';
-            }
-
-            if(self.options.position == 'left') {
+            	break;
+            case 'left':
                 animation.left = '-=20';
+            	break;
+            case 'right':
+            	animation.left = '+=20';
+                break;
+            case 'bottom':
+            	animation.top = '+=20';
+                break;
             }            
 
             self.bindHideEvent();
@@ -135,13 +174,22 @@ if ( typeof Object.create !== 'function' ) {
                 'opacity': 0,
             };
 
-            if(self.options.position == 'top') {
+            switch(self.options.position)
+            {
+            case 'top':
                 animation.top = '+=20';
+            	break;
+            case 'left':
+            	animation.left = '+=20';
+            	break;
+            case 'right':
+            	animation.left = '-=20';
+                break;
+            case 'bottom':
+            	animation.top = '-=20';
+                break;
             }
 
-            if(self.options.position == 'left') {
-                animation.left = '+=20';
-            }             
             self.toolbar.animate(animation, 200, function() {
                 self.toolbar.hide();
             } );

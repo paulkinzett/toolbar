@@ -72,7 +72,7 @@
 				<h2>Examples</h2>
 			
 				<div class="example">
-					<p>Horizontal toolbar</p>
+					<p>Horizontal toolbar (top)</p>
 					<section class="left">
 						<div id="normal-button" class="settings-button"><img src="img/icon-cog-small.png" /></div>
 					</section>
@@ -82,6 +82,34 @@
 $('#user-toolbar').toolbar({
 	content: '#user-toolbar-options', 
 	position: 'top'
+});</pre>
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+
+					</section>
+					<div class="clear"></div>
+				</div>
+
+				
+				<div class="example">
+					<p>Horizontal toolbar (bottom)</p>
+					<section class="left">
+						<div id="normal-button-bottom" class="settings-button"><img src="img/icon-cog-small.png" /></div>
+					</section>
+					<section class="right">
+<span>JS</span>
+<pre class="prettyprint">
+$('#user-toolbar').toolbar({
+	content: '#user-toolbar-options', 
+	position: 'bottom'
 });</pre>
 <span>HTML</span>
 <pre class="prettyprint">
@@ -127,7 +155,7 @@ $('#format-toolbar').toolbar({
 
 			
 			<div class="example">
-				<p>Vertical toolbar</p>
+				<p>Vertical toolbar (left)</p>
 			
 				<section class="left">
 			
@@ -156,7 +184,36 @@ $('#vertical-toolbar').toolbar({
 			</div>
 
 			<div class="example">
-				<p>Horizontal toolbar trigger by a link</p>
+				<p>Vertical toolbar (right)</p>
+			
+				<section class="left">
+			
+			<a id="button-right" class="settings-button"><span></span></a>
+		</section>
+<section class="right">
+<span>JS</span>
+<pre class="prettyprint">
+$('#vertical-toolbar').toolbar({
+	content: '#user-toolbar-options', 
+	position: 'right'
+});</pre>
+
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;	
+</pre>
+</section>
+<div class="clear"></div>
+			</div>
+
+			<div class="example">
+				<p>Horizontal toolbar triggered by a link</p>
 				<section class="left">
 					<a id="link-toolbar" class="demo-link">Options</a>
 				</section>
@@ -222,7 +279,7 @@ $('#element').toolbar( options );
 <h3>Notes</h3>
 
 <ul>
-	<li>The element that triggers the toolbar will gain the class <code>.pressed</code> when the toolbar is visable.</li>
+	<li>The element that triggers the toolbar will gain the class <code>.pressed</code> when the toolbar is visible.</li>
 	<li>Define any javascript for icon actions before calling the toolbar.</li>
 </ul>
 
@@ -244,7 +301,7 @@ $('#element').toolbar( options );
 			</tr>
 			<tr>
 				<td>position</td>
-				<td>Indicates the display position of the toobar relative to the element its attached agaisnt. Select either 'top' or 'left'. Default: top.</td>
+				<td>Indicates the display position of the toobar relative to the element its attached agaisnt. Select either 'top', 'bottom', 'left' or 'right. Default: top.</td>
 			</tr>
 			<tr>
 				<td>hideOnClick</td>
