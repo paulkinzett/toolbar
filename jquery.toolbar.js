@@ -4,10 +4,10 @@
  * @fileoverview  jQuery plugin that creates tooltip style toolbars.
  * @link          http://paulkinzett.github.com/tooltip-toolbar/
  * @author        Paul Kinzett (http://kinzett.co.nz/)
- * @version       1.0.0
+ * @version       1.0.2
  * @requires      jQuery 1.7+
  *
- * @license jQuery Toolbar Plugin v1.0.0
+ * @license jQuery Toolbar Plugin v1.0.2
  * http://paulkinzett.github.com/tooltip-toolbar/
  * Copyright 2013 Paul Kinzett (http://kinzett.co.nz/)
  * Released under the MIT license.
@@ -38,7 +38,8 @@ if ( typeof Object.create !== 'function' ) {
             .append('<div class="tool-items" />')
             .append('<div class="arrow" />')
             .appendTo('body')
-            .css('opacity', 0);                     
+            .css('opacity', 0)
+            .hide();                     
 
             self.initializeToolbar();
         },
@@ -72,7 +73,7 @@ if ( typeof Object.create !== 'function' ) {
         populateContent: function() {
             var self = this;
             var location = self.toolbar.find('.tool-items');
-            var content = $(self.options.content).clone().find('a').addClass('tool-item gradient');
+            var content = $(self.options.content).clone( true ).find('a').addClass('tool-item gradient');
             location.html(content);            
         },
         
