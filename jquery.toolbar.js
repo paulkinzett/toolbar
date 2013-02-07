@@ -81,7 +81,7 @@ if ( typeof Object.create !== 'function' ) {
             var self = this;  
             css = self.getCoordinates(self.options.position, 0);
             css.position = 'absolute';
-            css.zIndex = 120;            
+            css.zIndex = self.options.zIndex;            
             self.toolbar.css(css);
         },
         
@@ -206,7 +206,8 @@ if ( typeof Object.create !== 'function' ) {
     $.fn.toolbar.options = {
         content: '#myContent',
         position: 'top',
-        hideOnClick: false
+        hideOnClick: false,
+        zIndex: 120
     };    
     
     
