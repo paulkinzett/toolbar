@@ -23,7 +23,7 @@ if ( typeof Object.create !== 'function' ) {
 };
 
 (function( $, window, document, undefined ) {
-    
+
     var ToolBar = {
         init: function( options, elem ) {
             var self = this;
@@ -39,20 +39,20 @@ if ( typeof Object.create !== 'function' ) {
             .append('<div class="arrow" />')
             .appendTo('body')
             .css('opacity', 0)
-            .hide();                     
+            .hide();
 
             self.initializeToolbar();
         },
-        
+
         initializeToolbar: function() {
             var self = this;
-            self.populateContent();           
-            self.setTrigger();            
+            self.populateContent();
+            self.setTrigger();
         },
-        
+
         setTrigger: function() {
             var self = this;
-            
+
             self.$elem.on('click', function(event) {
                 event.preventDefault();
                 event.stopPropagation();
@@ -61,7 +61,7 @@ if ( typeof Object.create !== 'function' ) {
                 } else {
                     self.show();
                 }
-            });   
+            });
 
             $(window).resize(function( event ) {
                 event.stopPropagation();
@@ -69,26 +69,30 @@ if ( typeof Object.create !== 'function' ) {
                 self.toolbar.stop().animate(css);
             });
         },
-        
+
         populateContent: function() {
             var self = this;
             var location = self.toolbar.find('.tool-items');
             var content = $(self.options.content).clone( true ).find('a').addClass('tool-item gradient');
-            location.html(content);            
+            location.html(content);
+            location.find('.tool-item').click( function ( event ) {
+                event.preventDefault();
+                self.$elem.trigger('toolbaritemclick', this);
+            });
         },
-        
+
         calculatePosition: function() {
-            var self = this;  
+            var self = this;
             css = self.getCoordinates(self.options.position, 0);
             css.position = 'absolute';
-            css.zIndex = self.options.zIndex;            
+            css.zIndex = self.options.zIndex;
             self.toolbar.css(css);
         },
-        
+
         getCoordinates: function( position, adjustment) {
-            var self = this; 
+            var self = this;
             self.coordinates = self.$elem.offset();
-            
+
             switch(self.options.position)
             {
             case 'top':
@@ -115,20 +119,20 @@ if ( typeof Object.create !== 'function' ) {
                     top: self.coordinates.top+self.$elem.height()+adjustment,
                 }
                 break;
-            } 
+            }
 
         },
 
         show: function() {
             var self = this;
-  
+
             self.$elem.addClass('pressed');
             self.calculatePosition();
 
             var animation = {
                 'opacity': 1,
             };
-            
+
             switch(self.options.position)
             {
             case 'top':
@@ -143,17 +147,19 @@ if ( typeof Object.create !== 'function' ) {
             case 'bottom':
             	animation.top = '+=20';
                 break;
-            }    
-            
+            }
+
             self.bindHideEvent();
 
             self.toolbar.show().animate(animation, 200 );
+
+            self.$elem.trigger('toolbarshown');
         },
-        
+
         bindHideEvent: function() {
 
             var self = this;
-            
+
             var hideEvent = "click.toolbar";
 
             if(self.options.hideOnClick) {
@@ -161,8 +167,8 @@ if ( typeof Object.create !== 'function' ) {
                     if(self.toolbar.has(event.target).length === 0 ) {
                         self.hide();
                     }
-                });     
-            }             
+                });
+            }
 
         },
 
@@ -187,28 +193,30 @@ if ( typeof Object.create !== 'function' ) {
             case 'bottom':
             	animation.top = '-=20';
                 break;
-            }     
-            
+            }
+
             self.toolbar.animate(animation, 200, function() {
                 self.toolbar.hide();
             } );
-        },        
+
+            self.$elem.trigger('toolbarhidden');
+        },
 
     }
-    
-    $.fn.toolbar= function( options ) {      
+
+    $.fn.toolbar= function( options ) {
         return this.each(function() {
             var toolbarObj = Object.create( ToolBar );
             toolbarObj.init( options, this );
         });
-    };    
-    
+    };
+
     $.fn.toolbar.options = {
         content: '#myContent',
         position: 'top',
         hideOnClick: false,
         zIndex: 120
-    };    
-    
-    
+    };
+
+
 }) ( jQuery, window, document );

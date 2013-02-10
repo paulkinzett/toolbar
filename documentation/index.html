@@ -309,6 +309,62 @@ $('#element').toolbar( options );
 		</tbody>
 	</table>
 
+    <h2>Custom events triggered</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>Description</th>
+                <th>Callback example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>'toolbaritemclick'</td>
+                <td>Triggered when a button in the toolbar is clicked</td>
+                <td>
+                    <pre class="prettyprint">
+$('#element').on(
+    'toolbaritemclick',
+    function ( event, toolitem ) {
+        // `toolitem`: the toolbar button just clicked
+        // `this`: the element the toolbar is attached to
+    }
+);
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>'toolbarshown'</td>
+                <td>Triggered when the toolbar is shown</td>
+                <td>
+                    <pre class="prettyprint">
+$('#element').on(
+    'toolbarshown',
+    function ( event ) {
+        // `this`: the element the toolbar is attached to
+    }
+);
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td>'toolbarhidden'</td>
+                <td>Triggered when the toolbar is hidden</td>
+                <td>
+                    <pre class="prettyprint">
+$('#element').on(
+    'toolbarhidden',
+    function ( event ) {
+        // `this`: the element the toolbar is attached to
+    }
+);
+                    </pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </section>
 
 <footer>
