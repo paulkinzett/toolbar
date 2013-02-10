@@ -16,11 +16,11 @@
 
 if ( typeof Object.create !== 'function' ) {
     Object.create = function( obj ) {
-        function F() {};
+        function F() {}
         F.prototype = obj;
         return new F();
     };
-};
+}
 
 (function( $, window, document, undefined ) {
 
@@ -96,29 +96,25 @@ if ( typeof Object.create !== 'function' ) {
             switch(self.options.position)
             {
             case 'top':
-                return coordinates = {
+                return {
                     left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
-                    top: self.coordinates.top-self.$elem.height()-adjustment,
-                }
-            	break;
+                    top: self.coordinates.top-self.$elem.height()-adjustment
+                };
             case 'left':
-                return coordinates = {
+                return {
                     left: self.coordinates.left-(self.toolbar.width()/2)-(self.$elem.width()/2)-adjustment,
-                    top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
-                }
-            	break;
+                    top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2)
+                };
             case 'right':
-                return coordinates = {
+                return {
                     left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
-                    top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
-                }
-                break;
+                    top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2)
+                };
             case 'bottom':
-                return coordinates = {
+                return {
                     left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
-                    top: self.coordinates.top+self.$elem.height()+adjustment,
-                }
-                break;
+                    top: self.coordinates.top+self.$elem.height()+adjustment
+                };
             }
 
         },
@@ -130,23 +126,22 @@ if ( typeof Object.create !== 'function' ) {
             self.calculatePosition();
 
             var animation = {
-                'opacity': 1,
+                'opacity': 1
             };
 
-            switch(self.options.position)
-            {
-            case 'top':
-            	animation.top = '-=20';
-            	break;
-            case 'left':
-            	animation.left = '-=20';
-            	break;
-            case 'right':
-            	animation.left = '+=20';
-                break;
-            case 'bottom':
-            	animation.top = '+=20';
-                break;
+            switch(self.options.position) {
+                case 'top':
+                    animation.top = '-=20';
+                    break;
+                case 'left':
+                    animation.left = '-=20';
+                    break;
+                case 'right':
+                    animation.left = '+=20';
+                    break;
+                case 'bottom':
+                    animation.top = '+=20';
+                    break;
             }
 
             self.bindHideEvent();
@@ -176,23 +171,22 @@ if ( typeof Object.create !== 'function' ) {
             var self = this;
             self.$elem.removeClass('pressed');
             var animation = {
-                'opacity': 0,
+                'opacity': 0
             };
 
-            switch(self.options.position)
-            {
-            case 'top':
-            	animation.top = '+=20';
-            	break;
-            case 'left':
-            	animation.left = '+=20';
-            	break;
-            case 'right':
-            	animation.left = '-=20';
-                break;
-            case 'bottom':
-            	animation.top = '-=20';
-                break;
+            switch(self.options.position) {
+                case 'top':
+                    animation.top = '+=20';
+                    break;
+                case 'left':
+                    animation.left = '+=20';
+                    break;
+                case 'right':
+                    animation.left = '-=20';
+                    break;
+                case 'bottom':
+                    animation.top = '-=20';
+                    break;
             }
 
             self.toolbar.animate(animation, 200, function() {
@@ -200,9 +194,8 @@ if ( typeof Object.create !== 'function' ) {
             } );
 
             self.$elem.trigger('toolbarhidden');
-        },
-
-    }
+        }
+    };
 
     $.fn.toolbar= function( options ) {
         return this.each(function() {
