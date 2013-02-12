@@ -7,7 +7,7 @@
  * @version       1.0.2
  * @requires      jQuery 1.7+
  *
- * @license jQuery Toolbar Plugin v1.0.2
+ * @license jQuery Toolbar Plugin v1.0.3
  * http://paulkinzett.github.com/tooltip-toolbar/
  * Copyright 2013 Paul Kinzett (http://kinzett.co.nz/)
  * Released under the MIT license.
@@ -75,9 +75,9 @@ if ( typeof Object.create !== 'function' ) {
             var location = self.toolbar.find('.tool-items');
             var content = $(self.options.content).clone( true ).find('a').addClass('tool-item gradient');
             location.html(content);
-            location.find('.tool-item').click( function ( event ) {
+            location.find('.tool-item').on('click', function(event) {
                 event.preventDefault();
-                self.$elem.trigger('toolbaritemclick', this);
+                self.$elem.trigger('toolbarItemClick', this);
             });
         },
 
@@ -93,30 +93,28 @@ if ( typeof Object.create !== 'function' ) {
             var self = this;
             self.coordinates = self.$elem.offset();
 
-            switch(self.options.position)
-            {
-            case 'top':
-                return {
-                    left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
-                    top: self.coordinates.top-self.$elem.height()-adjustment
-                };
-            case 'left':
-                return {
-                    left: self.coordinates.left-(self.toolbar.width()/2)-(self.$elem.width()/2)-adjustment,
-                    top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2)
-                };
-            case 'right':
-                return {
-                    left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
-                    top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2)
-                };
-            case 'bottom':
-                return {
-                    left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
-                    top: self.coordinates.top+self.$elem.height()+adjustment
-                };
+            switch(self.options.position) {
+                case 'top':
+                    return {
+                        left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
+                        top: self.coordinates.top-self.$elem.height()-adjustment
+                    };
+                case 'left':
+                    return {
+                        left: self.coordinates.left-(self.toolbar.width()/2)-(self.$elem.width()/2)-adjustment,
+                        top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2)
+                    };
+                case 'right':
+                    return {
+                        left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
+                        top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2)
+                    };
+                case 'bottom':
+                    return {
+                        left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
+                        top: self.coordinates.top+self.$elem.height()+adjustment
+                    };
             }
-
         },
 
         show: function() {
@@ -148,7 +146,7 @@ if ( typeof Object.create !== 'function' ) {
 
             self.toolbar.show().animate(animation, 200 );
 
-            self.$elem.trigger('toolbarshown');
+            self.$elem.trigger('toolbarShown');
         },
 
         bindHideEvent: function() {
@@ -169,7 +167,9 @@ if ( typeof Object.create !== 'function' ) {
 
         hide: function() {
             var self = this;
+            
             self.$elem.removeClass('pressed');
+            
             var animation = {
                 'opacity': 0
             };
@@ -191,9 +191,9 @@ if ( typeof Object.create !== 'function' ) {
 
             self.toolbar.animate(animation, 200, function() {
                 self.toolbar.hide();
-            } );
+            });
 
-            self.$elem.trigger('toolbarhidden');
+            self.$elem.trigger('toolbarHidden');
         }
     };
 
