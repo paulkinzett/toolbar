@@ -23,7 +23,7 @@ if ( typeof Object.create !== 'function' ) {
 };
 
 (function( $, window, document, undefined ) {
-    
+
     var ToolBar = {
         init: function( options, elem ) {
             var self = this;
@@ -47,7 +47,8 @@ if ( typeof Object.create !== 'function' ) {
         initializeToolbar: function() {
             var self = this;
             self.populateContent();           
-            self.setTrigger();            
+            self.setTrigger();     
+            self.toolbarWidth = self.toolbar.width();
         },
         
         setTrigger: function() {
@@ -65,8 +66,14 @@ if ( typeof Object.create !== 'function' ) {
 
             $(window).resize(function( event ) {
                 event.stopPropagation();
-                css = self.getCoordinates(self.options.position, 20);
-                self.toolbar.stop().animate(css);
+                if ( self.toolbar.is(":visible") ) {
+                    self.toolbarCss = self.getCoordinates(self.options.position, 20);
+                    self.collistionDetection();
+                    //self.toolbar.stop().animate( self.toolbarCss );
+                    //self.toolbar.find('.arrow').stop().animate( self.arrowCss );
+                    self.toolbar.css( self.toolbarCss );
+                    self.toolbar.find('.arrow').css( self.arrowCss );
+                }
             });
         },
         
@@ -79,44 +86,73 @@ if ( typeof Object.create !== 'function' ) {
         
         calculatePosition: function() {
             var self = this;  
-            css = self.getCoordinates(self.options.position, 0);
-            css.position = 'absolute';
-            css.zIndex = 120;            
-            self.toolbar.css(css);
+                self.arrowCss = {};
+                self.toolbarCss = self.getCoordinates(self.options.position, 0);
+                self.toolbarCss.position = 'absolute';
+                self.toolbarCss.zIndex = 120;            
+                self.collistionDetection();
+                self.toolbar.css(self.toolbarCss);
+                self.toolbar.find('.arrow').css(self.arrowCss);
+                console.log( 'Calculate Position Function' );
         },
         
-        getCoordinates: function( position, adjustment) {
+        getCoordinates: function( position, adjustment ) {
             var self = this; 
             self.coordinates = self.$elem.offset();
             
-            switch(self.options.position)
+            switch(self.options.position) 
             {
             case 'top':
                 return coordinates = {
-                    left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
+                    left: self.coordinates.left-(self.toolbarWidth/2)+(self.$elem.width()/2),
                     top: self.coordinates.top-self.$elem.height()-adjustment,
+                    right: 'auto'
                 }
             	break;
             case 'left':
                 return coordinates = {
-                    left: self.coordinates.left-(self.toolbar.width()/2)-(self.$elem.width()/2)-adjustment,
+                    left: self.coordinates.left-(self.toolbarWidth/2)-(self.$elem.width()/2)-adjustment,
                     top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
+                    right: 'auto'
                 }
             	break;
             case 'right':
                 return coordinates = {
-                    left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
+                    left: self.coordinates.left+(self.toolbarWidth/2)+(self.$elem.width()/3)+adjustment,
                     top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
+                    right: 'auto'
                 }
                 break;
             case 'bottom':
                 return coordinates = {
-                    left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
+                    left: self.coordinates.left-(self.toolbarWidth/2)+(self.$elem.width()/2),
                     top: self.coordinates.top+self.$elem.height()+adjustment,
+                    right: 'auto'
                 }
                 break;
             } 
 
+        },
+
+        collistionDetection: function() {
+            var self = this;
+            var edgeOffset = 20;
+            if(self.options.position == 'top' || self.options.position == 'bottom') {
+
+                self.arrowCss = {left: '50%', right: '50%'};
+
+                if( self.toolbarCss.left < edgeOffset ) {
+                    self.toolbarCss.left = edgeOffset;
+                    self.arrowCss.left = self.$elem.offset().left + self.$elem.width()/2-(edgeOffset);
+                } 
+                else if(($(window).width() - (self.toolbarCss.left + self.toolbarWidth)) < edgeOffset) {
+                    self.toolbarCss.right = edgeOffset;
+                    self.toolbarCss.left = 'auto';
+                    self.arrowCss.left = 'auto';
+                    self.arrowCss.right = ($(window).width()-self.$elem.offset().left)-(self.$elem.width()/2)-(edgeOffset)-5;
+                }
+
+            }
         },
 
         show: function() {
@@ -129,8 +165,7 @@ if ( typeof Object.create !== 'function' ) {
                 'opacity': 1,
             };
             
-            switch(self.options.position)
-            {
+            switch(self.options.position) {
             case 'top':
             	animation.top = '-=20';
             	break;
@@ -147,7 +182,7 @@ if ( typeof Object.create !== 'function' ) {
             
             self.bindHideEvent();
 
-            self.toolbar.show().animate(animation, 200 );
+            self.toolbar.show().animate(animation, 200);
         },
         
         bindHideEvent: function() {
@@ -173,8 +208,7 @@ if ( typeof Object.create !== 'function' ) {
                 'opacity': 0,
             };
 
-            switch(self.options.position)
-            {
+            switch(self.options.position) {
             case 'top':
             	animation.top = '+=20';
             	break;
