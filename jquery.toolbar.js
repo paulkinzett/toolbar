@@ -2,16 +2,16 @@
  * Toolbar.js
  *
  * @fileoverview  jQuery plugin that creates tooltip style toolbars.
- * @link          http://paulkinzett.github.com/tooltip-toolbar/
+ * @link          http://paulkinzett.github.com/toolbar/
  * @author        Paul Kinzett (http://kinzett.co.nz/)
- * @version       1.0.2
+ * @version       1.0.4
  * @requires      jQuery 1.7+
  *
- * @license jQuery Toolbar Plugin v1.0.3
- * http://paulkinzett.github.com/tooltip-toolbar/
+ * @license jQuery Toolbar Plugin v1.0.4
+ * http://paulkinzett.github.com/toolbar/
  * Copyright 2013 Paul Kinzett (http://kinzett.co.nz/)
  * Released under the MIT license.
- * <https://raw.github.com/paulkinzett/tooltip-toolbar/master/LICENSE.txt>
+ * <https://raw.github.com/paulkinzett/toolbar/master/LICENSE.txt>
  */
 
 if ( typeof Object.create !== 'function' ) {
@@ -27,10 +27,8 @@ if ( typeof Object.create !== 'function' ) {
     var ToolBar = {
         init: function( options, elem ) {
             var self = this;
-
             self.elem = elem;
             self.$elem = $( elem );
-
             self.options = $.extend( {}, $.fn.toolbar.options, options );
             self.toolbar = $('<div class="tool-container gradient" />')
             .addClass('tool-'+self.options.position)
@@ -40,7 +38,6 @@ if ( typeof Object.create !== 'function' ) {
             .appendTo('body')
             .css('opacity', 0)
             .hide();
-
             self.initializeToolbar();
         },
 
@@ -69,8 +66,6 @@ if ( typeof Object.create !== 'function' ) {
                 if ( self.toolbar.is(":visible") ) {
                     self.toolbarCss = self.getCoordinates(self.options.position, 20);
                     self.collistionDetection();
-                    //self.toolbar.stop().animate( self.toolbarCss );
-                    //self.toolbar.find('.arrow').stop().animate( self.arrowCss );
                     self.toolbar.css( self.toolbarCss );
                     self.toolbar.find('.arrow').css( self.arrowCss );
                 }
