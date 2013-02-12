@@ -25,7 +25,7 @@
 		<link href="css/sunburst.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="js/prettify.js"></script>
-		<script src="../jquery.toolbar.js"></script>
+		<script src="../jquery.toolbar.min.js"></script>
 		
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
@@ -308,6 +308,41 @@ $('#element').toolbar( options );
 			</tr>			
 		</tbody>
 	</table>
+	<br/>
+    <h2>Events</h2>
+    <p>Below are a list of events that are triggered when certain events happen with the toolbar. You can listen for these events using the .on method.</p>
+<span>For example.</span>
+<pre class="prettyprint">
+$('#element').on('toolbarShown',
+    function( event ) {
+        // this: the element the toolbar is attached to
+    }
+);
+</pre>
+
+<br/>
+    <table>
+        <thead>
+            <tr>
+                <th>Event</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>toolbarShown</td>
+                <td>Triggered when the toolbar is shown.</td>
+            </tr>
+            <tr>
+                <td>toolbarHidden</td>
+                <td>Triggered when the toolbar is hidden.</td>
+            </tr>
+            <tr>
+                <td>toolbarItemClick</td>
+                <td>Triggered when a button in the toolbar is clicked. The toolbar item clicked is also passed through for this event.</td>
+            </tr>            
+        </tbody>
+    </table>
 
 </section>
 
