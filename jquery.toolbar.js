@@ -212,7 +212,7 @@ if ( typeof Object.create !== 'function' ) {
             self.$elem.trigger('toolbarHidden');
         },
 
-        get_toolbar_element: function () {
+        getToolbarElement: function () {
             return this.toolbar.find('.tool-items');
         }
     };
