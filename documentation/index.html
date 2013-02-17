@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 		<title>Toolbar.js - jQuery plugin to create tooltip style toobars</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<link href="css/documentation.css" rel="stylesheet" />
 		<link href="../jquery.toolbars.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
-		
+
 		<!--[if gte IE 9]>
 		  <style type="text/css">
-		    .gradient {
-		       filter: none !important;
-		    }
+			.gradient {
+			   filter: none !important;
+			}
 
 			.tool-container.tool-top {
 				border-bottom: none;
@@ -20,19 +20,19 @@
 		  </style>
 		<![endif]-->
 
-		<link href="../bootstrap.icons.css" rel="stylesheet"> 
-		<link href="css/prettify.css" rel="stylesheet"> 
+		<link href="../bootstrap.icons.css" rel="stylesheet">
+		<link href="css/prettify.css" rel="stylesheet">
 		<link href="css/sunburst.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="js/prettify.js"></script>
 		<script src="../jquery.toolbar.js"></script>
-		
+
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
-				
-				// Define any icon actions before calling the toolbar 
+
+				// Define any icon actions before calling the toolbar
 				$('.toolbar-icons a').on('click', function( event ) {
-					event.preventDefault(); 
+					event.preventDefault();
 				});
 
 				$('#normal-button').toolbar({content: '#user-options', position: 'top'});
@@ -53,7 +53,7 @@
 				<br/><br/>
 			</header>
 			<section>
-				<p>Toolbar allows you to quickly create tooltip style toolbars for use in web applications and websites. The toolbar is easily customisable using the twitter bootstrap icons and provides flexibility around the toolbars display and number of icons.</p>	
+				<p>Toolbar allows you to quickly create tooltip style toolbars for use in web applications and websites. The toolbar is easily customisable using the twitter bootstrap icons and provides flexibility around the toolbars display and number of icons.</p>
 			</section>
 
 			<section>
@@ -69,7 +69,7 @@
 
 			<section>
 				<h2>Examples</h2>
-			
+
 				<div class="example">
 					<p>Horizontal toolbar (top)</p>
 					<section class="left">
@@ -79,7 +79,7 @@
 <span>JS</span>
 <pre class="prettyprint">
 $('#user-toolbar').toolbar({
-	content: '#user-toolbar-options', 
+	content: '#user-toolbar-options',
 	position: 'top'
 });</pre>
 <span>HTML</span>
@@ -90,14 +90,14 @@ $('#user-toolbar').toolbar({
 	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/div&gt;	
+&lt;/div&gt;
 </pre>
 
 					</section>
 					<div class="clear"></div>
 				</div>
-				
-				
+
+
 				<div class="example">
 					<p>Horizontal toolbar (bottom)</p>
 					<section class="left">
@@ -107,7 +107,7 @@ $('#user-toolbar').toolbar({
 <span>JS</span>
 <pre class="prettyprint">
 $('#user-toolbar').toolbar({
-	content: '#user-toolbar-options', 
+	content: '#user-toolbar-options',
 	position: 'bottom'
 });</pre>
 <span>HTML</span>
@@ -118,7 +118,7 @@ $('#user-toolbar').toolbar({
 	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/div&gt;	
+&lt;/div&gt;
 </pre>
 
 					</section>
@@ -126,15 +126,15 @@ $('#user-toolbar').toolbar({
 				</div>
 
 				<div class="example">
-					<p>Horizontal toolbar with three items</p>	
+					<p>Horizontal toolbar with three items</p>
 					<section class="left">
 						<div id="normal-button-small" class="settings-button"><img src="img/icon-cog-small.png" /></div>
 					</section>
 					<section class="right">
-<span>JS</span>						
+<span>JS</span>
 <pre class="prettyprint">
 $('#format-toolbar').toolbar({
-	content: '#format-toolbar-options', 
+	content: '#format-toolbar-options',
 	position: 'top',
 	hideOnClick: true
 });</pre>
@@ -145,26 +145,26 @@ $('#format-toolbar').toolbar({
 	&lt;a href="#"&gt;&lt;i class="icon-align-left"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-align-center"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-align-right"&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/div&gt;	
+&lt;/div&gt;
 </pre>
 
 </section>
 <div class="clear"></div>
 </div>
 
-			
+
 			<div class="example">
 				<p>Vertical toolbar (left)</p>
-			
+
 				<section class="left">
-			
+
 			<a id="button-left" class="settings-button"><span></span></a>
 		</section>
 <section class="right">
 <span>JS</span>
 <pre class="prettyprint">
 $('#vertical-toolbar').toolbar({
-	content: '#user-toolbar-options', 
+	content: '#user-toolbar-options',
 	position: 'left'
 });</pre>
 
@@ -176,24 +176,24 @@ $('#vertical-toolbar').toolbar({
 	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/div&gt;	
+&lt;/div&gt;
 </pre>
 </section>
 <div class="clear"></div>
 			</div>
-			
+
 			<div class="example">
 				<p>Vertical toolbar (right)</p>
-			
+
 				<section class="left">
-			
+
 			<a id="button-right" class="settings-button"><span></span></a>
 		</section>
 <section class="right">
 <span>JS</span>
 <pre class="prettyprint">
 $('#vertical-toolbar').toolbar({
-	content: '#user-toolbar-options', 
+	content: '#user-toolbar-options',
 	position: 'right'
 });</pre>
 
@@ -205,7 +205,7 @@ $('#vertical-toolbar').toolbar({
 	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/div&gt;	
+&lt;/div&gt;
 </pre>
 </section>
 <div class="clear"></div>
@@ -217,10 +217,10 @@ $('#vertical-toolbar').toolbar({
 					<a id="link-toolbar" class="demo-link">Options</a>
 				</section>
 				<section class="right">
-<span>JS</span>					
+<span>JS</span>
 <pre class="prettyprint">
 $('#normal-button').toolbar({
-	content: '#user-options', 
+	content: '#user-options',
 	position: 'top'
 });</pre>
 <span>HTML</span>
@@ -231,7 +231,7 @@ $('#normal-button').toolbar({
 	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/div&gt;	
+&lt;/div&gt;
 </pre>
 
 </section>
@@ -264,7 +264,7 @@ $('#normal-button').toolbar({
 	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
 	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
-&lt;/div&gt;	
+&lt;/div&gt;
 </pre>
 <br/>
 
@@ -305,44 +305,65 @@ $('#element').toolbar( options );
 			<tr>
 				<td>hideOnClick</td>
 				<td>Choose if you want the toolbar to hide when anywhere outside the toolbar is clicked. Default: false.</td>
-			</tr>			
+			</tr>
 		</tbody>
 	</table>
+
 	<br/>
-    <h2>Events</h2>
-    <p>Below are a list of events that are triggered when certain events happen with the toolbar. You can listen for these events using the .on method.</p>
+	<h2>Methods</h2>
+	<p>Below is a list of methods available on the elements that already have a toolbar instantiated</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Method</th>
+				<th>Arguments</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>getToolbarElement</td>
+				<td>None</td>
+				<td>Obtain the element that wraps every tool button</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<br/>
+	<h2>Events</h2>
+	<p>Below are a list of events that are triggered when certain events happen with the toolbar. You can listen for these events using the .on method.</p>
 <span>For example.</span>
 <pre class="prettyprint">
 $('#element').on('toolbarShown',
-    function( event ) {
-        // this: the element the toolbar is attached to
-    }
+	function( event ) {
+		// this: the element the toolbar is attached to
+	}
 );
 </pre>
 
 <br/>
-    <table>
-        <thead>
-            <tr>
-                <th>Event</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>toolbarShown</td>
-                <td>Triggered when the toolbar is shown.</td>
-            </tr>
-            <tr>
-                <td>toolbarHidden</td>
-                <td>Triggered when the toolbar is hidden.</td>
-            </tr>
-            <tr>
-                <td>toolbarItemClick</td>
-                <td>Triggered when a button in the toolbar is clicked. The toolbar item clicked is also passed through for this event.</td>
-            </tr>            
-        </tbody>
-    </table>
+	<table>
+		<thead>
+			<tr>
+				<th>Event</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>toolbarShown</td>
+				<td>Triggered when the toolbar is shown.</td>
+			</tr>
+			<tr>
+				<td>toolbarHidden</td>
+				<td>Triggered when the toolbar is hidden.</td>
+			</tr>
+			<tr>
+				<td>toolbarItemClick</td>
+				<td>Triggered when a button in the toolbar is clicked. The toolbar item clicked is also passed through for this event.</td>
+			</tr>
+		</tbody>
+	</table>
 
 </section>
 
@@ -359,7 +380,7 @@ $('#element').on('toolbarShown',
 			<a href=""><i class="icon-align-left"></i></a>
 			<a href=""><i class="icon-align-center"></i></a>
 			<a href=""><i class="icon-align-right"></i></a>
-		</div>	
+		</div>
 
 		<div id="user-options" class="toolbar-icons" style="display: none;">
 			<a href="#"><i class="icon-user"></i></a>
@@ -367,6 +388,6 @@ $('#element').on('toolbarShown',
 			<a href="#"><i class="icon-edit"></i></a>
 			<a href="#"><i class="icon-trash"></i></a>
 			<a href="#"><i class="icon-ban-circle"></i></a>
-		</div>		
+		</div>
 	</body>
 </html>
