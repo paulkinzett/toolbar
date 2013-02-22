@@ -31,13 +31,14 @@ if ( typeof Object.create !== 'function' ) {
             self.$elem = $( elem );
             self.options = $.extend( {}, $.fn.toolbar.options, options );
             self.toolbar = $('<div class="tool-container gradient" />')
-            .addClass('tool-'+self.options.position)
-            .addClass('tool-rounded')
-            .append('<div class="tool-items" />')
-            .append('<div class="arrow" />')
-            .appendTo('body')
-            .css('opacity', 0)
-            .hide();
+                .addClass('tool-'+self.options.position)
+                .addClass('tool-rounded')
+                .append('<div class="tool-items" />')
+                .append('<div class="arrow" />')
+                .appendTo('body')
+                .css('opacity', 0)
+                .hide();
+            self.toolbar_arrow = self.toolbar.find('.arrow');
             self.initializeToolbar();
         },
 
@@ -77,7 +78,7 @@ if ( typeof Object.create !== 'function' ) {
                     self.toolbarCss = self.getCoordinates(self.options.position, 20);
                     self.collistionDetection();
                     self.toolbar.css( self.toolbarCss );
-                    self.toolbar.find('.arrow').css( self.arrowCss );
+                    self.toolbar_arrow.css( self.arrowCss );
                 }
             });
         },
@@ -101,7 +102,7 @@ if ( typeof Object.create !== 'function' ) {
                 self.toolbarCss.zIndex = self.options.zIndex;
                 self.collistionDetection();
                 self.toolbar.css(self.toolbarCss);
-                self.toolbar.find('.arrow').css(self.arrowCss);
+                self.toolbar_arrow.css(self.arrowCss);
         },
 
         getCoordinates: function( position, adjustment ) {
@@ -206,14 +207,25 @@ if ( typeof Object.create !== 'function' ) {
             });
 
             self.$elem.trigger('toolbarHidden');
+        },
+
+        getToolbarElement: function () {
+            return this.toolbar.find('.tool-items');
         }
     };
 
-    $.fn.toolbar= function( options ) {
-        return this.each(function() {
-            var toolbarObj = Object.create( ToolBar );
-            toolbarObj.init( options, this );
-        });
+    $.fn.toolbar = function( options ) {
+        if ($.isPlainObject( options )) {
+            return this.each(function() {
+                var toolbarObj = Object.create( ToolBar );
+                toolbarObj.init( options, this );
+                $(this).data('toolbarObj', toolbarObj);
+            });
+        } else if ( typeof options === 'string' && options.indexOf('_') !== 0 ) {
+            var toolbarObj = $(this).data('toolbarObj');
+            var method = toolbarObj[options];
+            return method.apply(toolbarObj, $.makeArray(arguments).slice(1));
+        }
     };
 
     $.fn.toolbar.options = {
@@ -222,6 +234,5 @@ if ( typeof Object.create !== 'function' ) {
         hideOnClick: false,
         zIndex: 120
     };
-
 
 }) ( jQuery, window, document );
