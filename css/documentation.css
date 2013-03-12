@@ -48,6 +48,19 @@ header {
 	margin-bottom: 50px;
 }
 
+header ul {
+	list-style: none;
+	margin-bottom: 0;
+	margin-top: 22px;
+	line-height: 10px;
+	margin-right: 13px;
+}
+
+header li {
+	display: inline-block;
+}
+
+
 section {
 	margin-bottom: 50px;
 }
