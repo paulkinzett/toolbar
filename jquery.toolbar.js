@@ -76,7 +76,7 @@ if ( typeof Object.create !== 'function' ) {
                 event.stopPropagation();
                 if ( self.toolbar.is(":visible") ) {
                     self.toolbarCss = self.getCoordinates(self.options.position, 20);
-                    self.collistionDetection();
+                    self.collisionDetection();
                     self.toolbar.css( self.toolbarCss );
                     self.toolbar_arrow.css( self.arrowCss );
                 }
@@ -100,7 +100,7 @@ if ( typeof Object.create !== 'function' ) {
                 self.toolbarCss = self.getCoordinates(self.options.position, 0);
                 self.toolbarCss.position = 'absolute';
                 self.toolbarCss.zIndex = self.options.zIndex;
-                self.collistionDetection();
+                self.collisionDetection();
                 self.toolbar.css(self.toolbarCss);
                 self.toolbar_arrow.css(self.arrowCss);
         },
@@ -108,6 +108,9 @@ if ( typeof Object.create !== 'function' ) {
         getCoordinates: function( position, adjustment ) {
             var self = this;
             self.coordinates = self.$elem.offset();
+
+            if (self.options.adjustment && self.options.adjustment[self.options.position])
+                adjustment = self.options.adjustment[self.options.position];
 
             switch(self.options.position) {
                 case 'top':
@@ -137,7 +140,7 @@ if ( typeof Object.create !== 'function' ) {
             }
         },
 
-        collistionDetection: function() {
+        collisionDetection: function() {
             var self = this;
             var edgeOffset = 20;
             if(self.options.position == 'top' || self.options.position == 'bottom') {
