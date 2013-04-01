@@ -323,7 +323,39 @@ $('#element').toolbar( options );
 	</table>
 
 </section>
+<section>
+	<h2>Events</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Event</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>toolbarShown</td>
+				<td>Triggered when the toolbar is rendered/shown.
+					<br><strong>Example</strong><br>
+					$('#user-toolbar').on('toolbarShown', function() { alert('shown!'); });
+				</td>
+			</tr>
+			<tr>
+				<td>toolbarHidden</td>
+				<td>Triggered when the toolbar is unrendered/hidden.
+					<br><br><strong>Example</strong><br>
+					$('#user-toolbar').on('toolbarHidden', function() { alert('hidden!'); });</td>
+			</tr>
+			<tr>
+				<td>toolbarItemClick</td>
+				<td>Triggered when a toolbar item is clicked.
+					<br><br><strong>Example</strong><br>
+					$('#user-toolbar').on('toolbarItemClick', function() { alert('woah, an item got clicked!'); });</td>
+			</tr>		
+		</tbody>
+	</table>
 
+</section>
 <footer>
 
 	<p>Built by <a href="http://www.kinzett.co.nz">Paul Kinzett</a> | Released under the MIT license | Fork this project from the <a href="https://github.com/paulkinzett/toolbar">GitHub repository</a>.</p>
