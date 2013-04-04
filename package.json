@@ -1,0 +1,29 @@
+{
+	"name": "toolbar.js",
+	"title": "Toolbar.js",
+	"description": "A jQuery plugin that creates tooltip style toolbars.",
+	"version": "1.0.0",
+	"homepage": "http://paulkinzett.github.com/toolbar",
+	"author": {
+		"name": "Paul Kinzett",
+		"url": "http://kinzett.co.nz/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/paulkinzett/toolbar.git"
+	},
+	"bugs": {
+		"url": "https://github.com/paulkinzett/toolbar/issues"
+	},
+	"licenses": [
+	{
+        "type": "MIT",
+        "url": "http://github.com/paulkinzett/toolbar/blob/master/LICENSE.txt"
+	}],
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-jshint": "~0.1.1",
+		"grunt-contrib-nodeunit": "~0.1.2",
+		"grunt-contrib-uglify": "~0.2"
+	}
+}
