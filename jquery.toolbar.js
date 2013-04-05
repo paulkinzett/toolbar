@@ -109,31 +109,32 @@ if ( typeof Object.create !== 'function' ) {
             var self = this;
             self.coordinates = self.$elem.offset();
 
-            if (self.options.adjustment && self.options.adjustment[self.options.position])
+            if (self.options.adjustment && self.options.adjustment[self.options.position]) {
                 adjustment = self.options.adjustment[self.options.position];
+            }
 
             switch(self.options.position) {
                 case 'top':
                     return {
-                        left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
+                        left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.outerWidth()/2),
                         top: self.coordinates.top-self.$elem.height()-adjustment,
                         right: 'auto'
                     };
                 case 'left':
                     return {
                         left: self.coordinates.left-(self.toolbar.width()/2)-(self.$elem.width()/2)-adjustment,
-                        top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
+                        top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.outerHeight()/2),
                         right: 'auto'
                     };
                 case 'right':
                     return {
                         left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
-                        top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.height()/2),
+                        top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.outerHeight()/2),
                         right: 'auto'
                     };
                 case 'bottom':
                     return {
-                        left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.width()/2),
+                        left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.outerWidth()/2),
                         top: self.coordinates.top+self.$elem.height()+adjustment,
                         right: 'auto'
                     };
