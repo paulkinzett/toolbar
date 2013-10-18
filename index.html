@@ -318,7 +318,63 @@ $('#element').toolbar( options );
 			<tr>
 				<td>hideOnClick</td>
 				<td>Choose if you want the toolbar to hide when anywhere outside the toolbar is clicked. Default: false.</td>
-			</tr>			
+			</tr>
+		</tbody>
+	</table>
+
+	<br/>
+	<h2>Methods</h2>
+	<p>Below is a list of methods available on the elements that already have a toolbar instantiated</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Method</th>
+				<th>Arguments</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>getToolbarElement</td>
+				<td>None</td>
+				<td>Obtain the element that wraps every tool button</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<br/>
+	<h2>Events</h2>
+	<p>Below are a list of events that are triggered when certain events happen with the toolbar. You can listen for these events using the .on method.</p>
+<span>For example.</span>
+<pre class="prettyprint">
+$('#element').on('toolbarShown',
+	function( event ) {
+		// this: the element the toolbar is attached to
+	}
+);
+</pre>
+
+<br/>
+	<table>
+		<thead>
+			<tr>
+				<th>Event</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>toolbarShown</td>
+				<td>Triggered when the toolbar is shown.</td>
+			</tr>
+			<tr>
+				<td>toolbarHidden</td>
+				<td>Triggered when the toolbar is hidden.</td>
+			</tr>
+			<tr>
+				<td>toolbarItemClick</td>
+				<td>Triggered when a button in the toolbar is clicked. The toolbar item clicked is also passed through for this event.</td>
+			</tr>
 		</tbody>
 	</table>
 
