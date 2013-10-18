@@ -130,3 +130,8 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+#carbonads-container {
+    float: right;
+    margin-right: 100px;
+}
