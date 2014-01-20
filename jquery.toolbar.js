@@ -110,7 +110,7 @@ if ( typeof Object.create !== 'function' ) {
             self.coordinates = self.$elem.offset();
 
             if (self.options.adjustment && self.options.adjustment[self.options.position]) {
-                adjustment = self.options.adjustment[self.options.position];
+                adjustment = self.options.adjustment[self.options.position] + adjustment;
             }
 
             switch(self.options.position) {
