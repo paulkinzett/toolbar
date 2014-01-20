@@ -1,0 +1,10 @@
+{
+  "name": "toolbar",
+  "version": "1.0.0",
+  "main": "jquery.toolbar.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
