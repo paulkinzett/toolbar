@@ -75,7 +75,7 @@ if ( typeof Object.create !== 'function' ) {
             if (self.options.hover) {
                 var moveTime;
 
-                decideTimeout = function () {
+                function decideTimeout () {
                     if (self.$elem.hasClass('pressed')) {
                         moveTime = setTimeout(function() {
                             self.hide();
