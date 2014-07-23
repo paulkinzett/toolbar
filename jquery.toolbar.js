@@ -72,6 +72,39 @@ if ( typeof Object.create !== 'function' ) {
                 });
             }
 
+            if (self.options.hover) {
+                var moveTime;
+
+                decideTimeout = function () {
+                    if (self.$elem.hasClass('pressed')) {
+                        moveTime = setTimeout(function() {
+                            self.hide();
+                        }, 150);
+                    } else {
+                        clearTimeout(moveTime);
+                    };
+                };
+
+                self.$elem.on({
+                    mouseenter: function(event) {
+                        if (self.$elem.hasClass('pressed')) {
+                            clearTimeout(moveTime);
+                        } else {
+                            self.show();
+                        }
+                    }
+                });
+
+                self.$elem.parent().on({
+                    mouseleave: function(event){ decideTimeout(); }
+                });
+
+                $('.tool-container').on({
+                    mouseenter: function(event){ clearTimeout(moveTime); },
+                    mouseleave: function(event){ decideTimeout(); }
+                });
+            }
+
             $(window).resize(function( event ) {
                 event.stopPropagation();
                 if ( self.toolbar.is(":visible") ) {
@@ -236,7 +269,8 @@ if ( typeof Object.create !== 'function' ) {
         content: '#myContent',
         position: 'top',
         hideOnClick: false,
-        zIndex: 120
+        zIndex: 120,
+        hover: false
     };
 
 }) ( jQuery, window, document );
