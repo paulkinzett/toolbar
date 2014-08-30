@@ -38,6 +38,8 @@
 				$('#normal-button').toolbar({content: '#user-options', position: 'top'});
 				$('#normal-button-bottom').toolbar({content: '#user-options', position: 'bottom'});
 				$('#normal-button-small').toolbar({content: '#user-options-small', position: 'top', hideOnClick: true});
+				$('#button-on-hover').toolbar({content: '#user-options', position: 'top', hover: true});
+
 				$('#button-left').toolbar({content: '#user-options', position: 'left'});
 				$('#button-right').toolbar({content: '#user-options', position: 'right'});
 				$('#link-toolbar').toolbar({content: '#user-options', position: 'top' });
@@ -123,6 +125,36 @@ $('#user-toolbar').toolbar({
 					</section>
 					<div class="clear"></div>
 				</div>
+
+
+				<div class="example">
+					<p>Toolbar triggered on hover</p>
+					<section class="left">
+						<div id="button-on-hover" class="settings-button"><img src="img/icon-cog-small.png" /></div>
+					</section>
+					<section class="right">
+<span>JS</span>
+<pre class="prettyprint">
+$('#user-toolbar').toolbar({
+	content: '#user-toolbar-options',
+	position: 'top',
+	hover: true
+});</pre>
+<span>HTML</span>
+<pre class="prettyprint">
+&lt;div id="user-toolbar-options"&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-user"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-star"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-edit"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-delete"&gt;&lt;/i&gt;&lt;/a&gt;
+	&lt;a href="#"&gt;&lt;i class="icon-ban"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+
+					</section>
+					<div class="clear"></div>
+				</div>
+
 
 				<div class="example">
 					<p>Horizontal toolbar with three items</p>
@@ -305,6 +337,10 @@ $('#element').toolbar( options );
 				<td>hideOnClick</td>
 				<td>Choose if you want the toolbar to hide when anywhere outside the toolbar is clicked. Default: false.</td>
 			</tr>
+			<tr>
+				<td>hover</td>
+				<td>Choose if you want the toolbar to show on mouse hover. Default: false</td>
+			</tr>			
 		</tbody>
 	</table>
 
