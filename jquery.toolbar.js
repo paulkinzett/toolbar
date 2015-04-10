@@ -155,13 +155,13 @@ if ( typeof Object.create !== 'function' ) {
                     };
                 case 'left':
                     return {
-                        left: self.coordinates.left-(self.toolbar.width()/2)-(self.$elem.width()/2)-adjustment,
+                        left: self.coordinates.left-(self.toolbar.width()/2)-adjustment,
                         top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.outerHeight()/2),
                         right: 'auto'
                     };
                 case 'right':
                     return {
-                        left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
+                        left: self.coordinates.left+self.$elem.width()-(self.toolbar.width()/2)+adjustment,
                         top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.outerHeight()/2),
                         right: 'auto'
                     };
