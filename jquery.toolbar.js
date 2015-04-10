@@ -150,7 +150,7 @@ if ( typeof Object.create !== 'function' ) {
                 case 'top':
                     return {
                         left: self.coordinates.left-(self.toolbar.width()/2)+(self.$elem.outerWidth()/2),
-                        top: self.coordinates.top-self.$elem.height()-adjustment,
+                        top: self.coordinates.top-self.toolbar.height()-adjustment,
                         right: 'auto'
                     };
                 case 'left':
