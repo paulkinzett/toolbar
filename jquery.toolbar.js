@@ -124,10 +124,13 @@ if ( typeof Object.create !== 'function' ) {
             content.find('a').addClass('tool-item gradient');
             //append all the content
             location.html(content.find( self.options.elementToAppend || "a" ));
-            location.find('.tool-item').on('click', function(event) {
-                event.preventDefault();
-                self.$elem.trigger('toolbarItemClick', this);
-            });
+            if (self.options.handleClick) {
+                location.find('.tool-item').on('click', function(event) {
+                    event.preventDefault();
+                    self.$elem.trigger('toolbarItemClick', this);
+                });
+            }
+                
         },
 
         calculatePosition: function() {
@@ -273,7 +276,8 @@ if ( typeof Object.create !== 'function' ) {
         position: 'top',
         hideOnClick: false,
         zIndex: 120,
-        hover: false
+        hover: false,
+        handleClick: true
     };
 
 }) ( jQuery, window, document );
