@@ -119,8 +119,11 @@ if ( typeof Object.create !== 'function' ) {
         populateContent: function() {
             var self = this;
             var location = self.toolbar.find('.tool-items');
-            var content = $(self.options.content).clone( true ).find('a').addClass('tool-item gradient');
-            location.html(content);
+            var content = $(self.options.content).clone( true );
+            //Add tool-item class to link elements
+            content.find('a').addClass('tool-item gradient');
+            //append all the content
+            location.html(content.find( self.options.elementToAppend || "a" ));
             location.find('.tool-item').on('click', function(event) {
                 event.preventDefault();
                 self.$elem.trigger('toolbarItemClick', this);
