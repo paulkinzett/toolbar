@@ -1,15 +1,23 @@
 module.exports = function(grunt) {
-  // Do grunt-related things in here
-
   grunt.initConfig({
-
     pkg: grunt.file.readJSON('package.json'),
-
+    less: {
+        prod: {
+            options: {
+                yuicompress: false
+            },
+            files: [
+                {
+                    src: 'less/jquery.toolbar.less',
+                    dest: 'jquery.toolbar.css'
+                }
+            ]
+        }
+    },
     files: {
         src: 'jquery.toolbar.js',
         min: 'jquery.toolbar.min.js'
     },
-
     uglify: {
         dist: {
             options: {
@@ -20,7 +28,6 @@ module.exports = function(grunt) {
             }
         }
     },
-
     jshint: {
             // define the files to lint
             files: ['gruntfile.js', '<%= files.src %>'],
@@ -57,11 +64,15 @@ module.exports = function(grunt) {
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     // this would be run by typing "grunt test" on the command line
     grunt.registerTask('test', ['jshint']);
 
     // Default task(s).
     grunt.registerTask('default', ['uglify']);
+
+    grunt.registerTask('build', ['less']);
+	
 
 };

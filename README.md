@@ -2,6 +2,10 @@
 
 A jQuery plugin that creates tooltip style toolbars.
 
+## Update
+
+Toolbar.js has been overhauled with new functionality, a completely new design and now makes use of [Font Awesome](http://fortawesome.github.io/Font-Awesome/) project as the base for icons.
+
 ## Documentation
 
 You can find the documentation for the toolbar at the [toolbar project page][projectpage].
@@ -12,7 +16,7 @@ You can find the documentation for the toolbar at the [toolbar project page][pro
 
 *(This project is released under the [MIT license](https://raw.github.com/paulkinzett/toolbar/master/LICENSE.txt).)*
 
-Copyright (c) 2013 Paul Kinzett (http://kinzett.co.nz/)
+Copyright (c) 2015 Paul Kinzett (http://kinzett.co.nz/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
