@@ -192,3 +192,8 @@ header li {
   background-color: #35c8f5;
   border-color: #35c8f5;	
 }
+
+#carbonads-container {
+    float: right;
+    margin-right: 100px;
+}
