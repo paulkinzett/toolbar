@@ -7,21 +7,10 @@
 		<link href="css/jquery.toolbar.css" rel="stylesheet" />
 		<link href='http://fonts.googleapis.com/css?family=Lustria' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-		<!--[if gte IE 9]>
-		  <style type="text/css">
-			.tool-container.tool-top {
-				border-bottom: none;
-			}
-		  </style>
-		<![endif]-->
-
 		<link href="css/prettify.css" rel="stylesheet">
-		<!-- <link href="css/sunburst.css" rel="stylesheet"> -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script src="js/prettify.js"></script>
 		<script src="js/jquery.toolbar.min.js"></script>
-
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 
@@ -38,9 +27,6 @@
 				$('div[data-toolbar="transport-options"]').toolbar({
 				    content: '#transport-options',
 				    position: 'top',
-				    hideOnClick: true,
-				    event: 'hover',
-				    animation: 'flip'
 				});		
 
 				$('div[data-toolbar="transport-options-o"]').toolbar({
@@ -109,14 +95,20 @@
 				    position: 'bottom',
 				});	
 
-
 				$('div[data-toolbar="set-04"]').toolbar({
 				    content: '#set-04-options',
 				    position: 'right',
 				});	
 
+				$(".download").on('click', function() {
+					mixpanel.track("Toolbar.Download");
+				});
+
 			});
 		</script>
+<!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
+mixpanel.init("eddc73f9a74424541cdcc5d52286c0d8");</script><!-- end Mixpanel -->		
 	</head>
 	<body onload="prettyPrint()" >
         <div id="carbonads-container"><div class="carbonad"><div id="azcarbon"></div><script type="text/javascript">var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = "http://engine.carbonads.com/z/52750/azcarbon_2_1_0_VERTDARK"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script></div></div>		
@@ -144,6 +136,20 @@
 				<p>A big thanks to the <a href="https://hoarrd.com/drunken-parrot-flat-ui-kit/">Drunken Parrot UI Kit</a> by <a href="https://hoarrd.com/">Hoarrd</a> for inspiration.</p>
 				<br>
 				<p class="download"><a class="btn btn-download" href="https://github.com/paulkinzett/toolbar/zipball/master"><i class="fa fa-diamond"></i> Download</a></p>	
+				<br>
+				<p style="font-size: 11px; text-align: center">You can show your appreciation for Toolbar.js and support future development by donating</p>
+					<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="text-align: center">
+					<input type="hidden" name="cmd" value="_donations">
+					<input type="hidden" name="business" value="paul.kinzett@gmail.com">
+					<input type="hidden" name="lc" value="NZ">
+					<input type="hidden" name="item_name" value="Toolbar.js">
+					<input type="hidden" name="no_note" value="0">
+					<input type="hidden" name="currency_code" value="USD">
+					<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_SM.gif:NonHostedGuest">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+					</form>
+				</p>
 			</section>
 
 			<section>
@@ -156,7 +162,7 @@
 					<li>Toobar icons are easily customised through the popular <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> icons.</li>
 					<li>Plenty of options to customised how your toolbar functions including position, animations and events.</li>
 					<li>Toolbars are responsive and follow the buttons on resize.</li>
-					<li>Make full use of CSS3 for animations.</li>
+					<li>Makes full use of CSS3 for animations.</li>
 				</ul>
 			</section>
 
@@ -195,12 +201,12 @@
 				</div>
 				<span>Animations</span>
 				<div class="samples">
-					<div data-toolbar="transport-options" data-toolbar-animate="standard" class="btn-toolbar btn-toolbar-primary pull-left" data-toolbar-event="click" data-toolbar-style="primary"><i class="fa fa-plane"></i></div>
-					<div data-toolbar="transport-options" data-toolbar-animate="flip" class="btn-toolbar btn-toolbar-danger pull-left" data-toolbar-style="danger"><i class="fa fa-bicycle"></i></div>
-					<div data-toolbar="transport-options" data-toolbar-animate="grow" class="btn-toolbar btn-toolbar-warning pull-left" data-toolbar-style="warning"><i class="fa fa-car"></i></div>
-					<div data-toolbar="transport-options" data-toolbar-animate="flyin" class="btn-toolbar btn-toolbar-info pull-left" data-toolbar-style="info"><i class="fa fa-train"></i></div>
-					<div data-toolbar="transport-options" data-toolbar-animate="bounce" class="btn-toolbar btn-toolbar-success pull-left" data-toolbar-style="success"><i class="fa fa-subway"></i></div>
-					<div data-toolbar="transport-options" data-toolbar-animate="grow" class="btn-toolbar btn-toolbar-info-o pull-left" data-toolbar-style="info-o"><i class="fa fa-truck"></i></div>
+					<div data-toolbar="transport-options" data-toolbar-animation="standard" class="btn-toolbar btn-toolbar-primary pull-left" data-toolbar-event="click" data-toolbar-style="primary"><i class="fa fa-plane"></i></div>
+					<div data-toolbar="transport-options" data-toolbar-animation="flip" class="btn-toolbar btn-toolbar-danger pull-left" data-toolbar-style="danger"><i class="fa fa-bicycle"></i></div>
+					<div data-toolbar="transport-options" data-toolbar-animation="grow" class="btn-toolbar btn-toolbar-warning pull-left" data-toolbar-style="warning"><i class="fa fa-car"></i></div>
+					<div data-toolbar="transport-options" data-toolbar-animation="flyin" class="btn-toolbar btn-toolbar-info pull-left" data-toolbar-style="info"><i class="fa fa-train"></i></div>
+					<div data-toolbar="transport-options" data-toolbar-animation="bounce" class="btn-toolbar btn-toolbar-success pull-left" data-toolbar-style="success"><i class="fa fa-subway"></i></div>
+					<div data-toolbar="transport-options" data-toolbar-animation="grow" class="btn-toolbar btn-toolbar-info-o pull-left" data-toolbar-style="info-o"><i class="fa fa-truck"></i></div>
 					<div class="clear"></div>
 				</div>				
 				<br><br><br>
