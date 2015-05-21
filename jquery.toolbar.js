@@ -1,3 +1,6 @@
+//jscs:disable
+/* jshint ignore:start */
+
 /**
  * Toolbar.js
  *
@@ -130,7 +133,7 @@ if ( typeof Object.create !== 'function' ) {
                     self.$elem.trigger('toolbarItemClick', this);
                 });
             }
-                
+
         },
 
         calculatePosition: function() {
@@ -167,7 +170,7 @@ if ( typeof Object.create !== 'function' ) {
                     };
                 case 'right':
                     return {
-                        left: self.coordinates.left+(self.toolbar.width()/2)+(self.$elem.width()/3)+adjustment,
+                        left: self.coordinates.left+(self.$elem.width())+adjustment,
                         top: self.coordinates.top-(self.toolbar.height()/2)+(self.$elem.outerHeight()/2),
                         right: 'auto'
                     };
@@ -281,3 +284,5 @@ if ( typeof Object.create !== 'function' ) {
     };
 
 }) ( jQuery, window, document );
+
+/* jshint ignore:end */
