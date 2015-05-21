@@ -36,6 +36,7 @@ if ( typeof Object.create !== 'function' ) {
             self.toolbar = $('<div class="tool-container gradient" />')
                 .addClass('tool-'+self.options.position)
                 .addClass('tool-rounded')
+                .addClass( (self.options.className || "") )
                 .append('<div class="tool-items" />')
                 .append('<div class="arrow" />')
                 .appendTo('body')
