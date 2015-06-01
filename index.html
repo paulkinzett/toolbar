@@ -104,6 +104,30 @@
 					mixpanel.track("Toolbar.Download");
 				});
 
+				$("#transport-options-2").find('a').on('click', function() {
+					$this = $(this);
+					$button = $('div[data-toolbar="transport-options-2"]');
+					$newClass = $this.find('i').attr('class').substring(3);
+					$oldClass = $button.find('i').attr('class').substring(3);
+					if($newClass != $oldClass) {
+						$button.find('i').animate({
+							top: "+=50",
+							opacity: 0
+						}, 200, function() {
+							$(this).removeClass($oldClass).addClass($newClass).css({top: "-=100", opacity: 1}).animate({
+								top: "+=50" 	
+							});
+						});
+					}
+
+				});
+
+				$('div[data-toolbar="transport-options-2"]').toolbar({
+				    content: '#transport-options-2',
+				    position: 'top',
+				});	
+
+
 			});
 		</script>
 <!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
@@ -116,6 +140,8 @@ mixpanel.init("eddc73f9a74424541cdcc5d52286c0d8");</script><!-- end Mixpanel -->
 			<header>
 				<h1>Toolbar.Js</h1>
 				<p>A jQuery plugin that creates tooltip style toolbars</p>
+				<div data-toolbar="transport-options-2" data-toolbar-animation="flip" class="btn-toolbar feature-toolbar btn-toolbar-primary text-center" data-toolbar-style="primary"><i class="fa fa-bicycle" style="position: relative"></i></div>
+
 				<small>By <a href="http://kinzett.co.nz">Paul Kinzett</a></small>
 				<br><br>
 				<ul>
@@ -279,7 +305,7 @@ mixpanel.init("eddc73f9a74424541cdcc5d52286c0d8");</script><!-- end Mixpanel -->
 
 <span>Define your toolbar HTML anywhere on the page. This is where you define the icons you want to appear in your toolbar. Remember to add the hidden class so the toolbar doesnt appear on the page.</span>
 <pre class="prettyprint">
-&lt;div id="toolbar-options hidden"&gt;
+&lt;div id="toolbar-options" class="hidden"&gt;
    &lt;a href="#"&gt;&lt;i class="fa fa-plane"&gt;&lt;/i&gt;&lt;/a&gt;
    &lt;a href="#"&gt;&lt;i class="fa fa-car"&gt;&lt;/i&gt;&lt;/a&gt;
    &lt;a href="#"&gt;&lt;i class="fa fa-bicycle"&gt;&lt;/i&gt;&lt;/a&gt;
@@ -580,6 +606,12 @@ $('#element').on('toolbarShown',
 			<a href="#"><i class="fa fa-car"></i></a>
 			<a href="#"><i class="fa fa-bicycle"></i></a>
 		</div>		
+
+		<div id="transport-options-2" class="toolbar-icons hidden">
+			<a href="#"><i class="fa fa-plane"></i></a>
+			<a href="#"><i class="fa fa-car"></i></a>
+			<a href="#"><i class="fa fa-bicycle"></i></a>
+		</div>	
 
 		<div id="transport-options-o" class="toolbar-icons hidden">
 			<a href="#"><i class="fa fa-car"></i></a>

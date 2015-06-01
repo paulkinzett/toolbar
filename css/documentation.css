@@ -197,3 +197,8 @@ header li {
     float: right;
     margin-right: 100px;
 }
+
+.feature-toolbar {
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
