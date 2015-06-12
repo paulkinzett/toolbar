@@ -1,6 +1,5 @@
 {
   "name": "toolbar",
-  "version": "1.1.0",
   "main": "jquery.toolbar.js",
   "ignore": [
     "**/.*",
