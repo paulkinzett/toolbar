@@ -27,6 +27,8 @@ if ( typeof Object.create !== 'function' ) {
 
 (function( $, window, document, undefined ) {
 
+    var instances = [];
+
     var ToolBar = {
         init: function( options, elem ) {
             var self = this;
@@ -43,6 +45,9 @@ if ( typeof Object.create !== 'function' ) {
                 .css('opacity', 0)
                 .hide();
             self.toolbar_arrow = self.toolbar.find('.arrow');
+
+            instances.push(self);
+
             self.initializeToolbar();
         },
 
@@ -54,16 +59,22 @@ if ( typeof Object.create !== 'function' ) {
         },
 
         setTrigger: function() {
-            var self = this;
+            var self = this,
+                moveTime;
 
-            self.$elem.on('click', function(event) {
-                event.preventDefault();
-                if(self.$elem.hasClass('pressed')) {
-                    self.hide();
-                } else {
-                    self.show();
-                }
-            });
+            if (self.options.click) {
+                self.$elem.on('click', function(event) {
+                    event.preventDefault();
+                    if (!self.showed_in_focus){
+                        if(self.$elem.hasClass('pressed')) {
+                            self.hide();
+                        } else {
+                            self.show();
+                        }
+                    }
+                    self.showed_in_focus = false;
+                });
+            }
 
             if (self.options.hideOnClick) {
                 $('html').on("click.toolbar", function ( event ) {
@@ -76,18 +87,17 @@ if ( typeof Object.create !== 'function' ) {
                 });
             }
 
-            if (self.options.hover) {
-                var moveTime;
-
-                function decideTimeout () {
-                    if (self.$elem.hasClass('pressed')) {
-                        moveTime = setTimeout(function() {
-                            self.hide();
-                        }, 150);
-                    } else {
-                        clearTimeout(moveTime);
-                    };
+            function decideTimeout () {
+                if (self.$elem.hasClass('pressed')) {
+                    moveTime = setTimeout(function() {
+                        self.hide();
+                    }, 150);
+                } else {
+                    clearTimeout(moveTime);
                 };
+            };
+
+            if (self.options.hover) {
 
                 self.$elem.on({
                     mouseenter: function(event) {
@@ -106,6 +116,23 @@ if ( typeof Object.create !== 'function' ) {
                 $('.tool-container').on({
                     mouseenter: function(event){ clearTimeout(moveTime); },
                     mouseleave: function(event){ decideTimeout(); }
+                });
+            }
+
+            if (self.options.focus) {
+
+                self.$elem.on({
+                    focus: function(event) {
+                        self.showed_in_focus = true;
+                        if (self.$elem.hasClass('pressed')) {
+                            clearTimeout(moveTime);
+                        } else {
+                            self.show();
+                        }
+                    },
+                    blur: function(event){
+                        decideTimeout();
+                    }
                 });
             }
 
@@ -206,6 +233,11 @@ if ( typeof Object.create !== 'function' ) {
             var self = this;
             var animation = {'opacity': 1};
 
+            //Hide all other toolbars
+            _.each(instances, function(toolbar) {
+                toolbar.hide(true);
+            });
+
             self.$elem.addClass('pressed');
             self.calculatePosition();
 
@@ -228,30 +260,35 @@ if ( typeof Object.create !== 'function' ) {
             self.$elem.trigger('toolbarShown');
         },
 
-        hide: function() {
+        hide: function( no_anim ) {
             var self = this;
             var animation = {'opacity': 0};
 
             self.$elem.removeClass('pressed');
 
-            switch(self.options.position) {
-                case 'top':
-                    animation.top = '+=20';
-                    break;
-                case 'left':
-                    animation.left = '+=20';
-                    break;
-                case 'right':
-                    animation.left = '-=20';
-                    break;
-                case 'bottom':
-                    animation.top = '-=20';
-                    break;
+            if (no_anim) {
+                self.toolbar.hide();
+            } else {
+                switch(self.options.position) {
+                    case 'top':
+                        animation.top = '+=20';
+                        break;
+                    case 'left':
+                        animation.left = '+=20';
+                        break;
+                    case 'right':
+                        animation.left = '-=20';
+                        break;
+                    case 'bottom':
+                        animation.top = '-=20';
+                        break;
+                }
+
+                self.toolbar.animate(animation, 200, function() {
+                    self.toolbar.hide();
+                });
             }
 
-            self.toolbar.animate(animation, 200, function() {
-                self.toolbar.hide();
-            });
 
             self.$elem.trigger('toolbarHidden');
         },
@@ -281,6 +318,8 @@ if ( typeof Object.create !== 'function' ) {
         hideOnClick: false,
         zIndex: 120,
         hover: false,
+        focus: false,
+        click: true,
         handleClick: true
     };
 
