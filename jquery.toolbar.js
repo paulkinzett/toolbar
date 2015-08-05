@@ -158,6 +158,7 @@ if ( typeof Object.create !== 'function' ) {
             if (self.options.handleClick) {
                 location.find('.tool-item').on('click', function(event) {
                     event.preventDefault();
+                    event.stopPropagation();
                     self.$elem.trigger('toolbarItemClick', this);
                 });
             }
