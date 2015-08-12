@@ -235,9 +235,9 @@ if ( typeof Object.create !== 'function' ) {
             var animation = {'opacity': 1};
 
             //Hide all other toolbars
-            _.each(instances, function(toolbar) {
-                toolbar.hide(true);
-            });
+            for (var i = instances.length - 1; i >= 0; i--) {
+                instances[i].hide(true);
+            };            
 
             self.$elem.addClass('pressed');
             self.calculatePosition();
