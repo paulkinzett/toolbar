@@ -1,3 +1,9 @@
+.tool-container, .tool-item, .btn-toolbar {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
 .btn-toolbar {
   background: #364347;
   width: 20px;
