@@ -41,6 +41,7 @@ if ( typeof Object.create !== 'function' ) {
                 .css('opacity', 0)
                 .hide();
             self.toolbar_arrow = self.toolbar.find('.arrow');
+			self.$elem.on("remove",function(){self.toolbar.remove();});
             self.initializeToolbar();
         },
 
@@ -165,7 +166,10 @@ if ( typeof Object.create !== 'function' ) {
         populateContent: function() {
             var self = this;
             var location = self.toolbar.find('.tool-items');
-            var content = $(self.options.content).clone( true ).find('a').addClass('tool-item');
+			if(self.options.inline)
+				var content = $(self.options.content).find("a").addClass("tool-item");
+			else
+				var content = $(self.options.content).clone( true ).find('a').addClass('tool-item');
             location.html(content);
             location.find('.tool-item').on('click', function(event) {
                 event.preventDefault();
@@ -238,6 +242,9 @@ if ( typeof Object.create !== 'function' ) {
             }
         },
 
+		remove:function(){
+			this.toolbar.remove();
+		},
         show: function() {
             var self = this;
             self.$elem.addClass('pressed');
@@ -292,9 +299,12 @@ if ( typeof Object.create !== 'function' ) {
             return method.apply(toolbarObj, $.makeArray(arguments).slice(1));
         }
     };
+	
+	
 
     $.fn.toolbar.options = {
         content: '#myContent',
+		inline: false,
         position: 'top',
         hideOnClick: false,
         zIndex: 120,
