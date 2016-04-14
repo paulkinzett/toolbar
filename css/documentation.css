@@ -21,13 +21,13 @@ h2 {
 	padding: 2px 0 5px 2px;
 }
 
-h3 {	
+h3 {
 	margin-bottom: 2px;
 }
 
 h3 + p {
 	margin-bottom: 2px;
-	margin-top: 2px; 
+	margin-top: 2px;
 }
 
 a {
@@ -190,12 +190,7 @@ header li {
 .btn-download:hover {
 	text-decoration: none;
   background-color: #35c8f5;
-  border-color: #35c8f5;	
-}
-
-#carbonads-container {
-    float: right;
-    margin-right: 100px;
+  border-color: #35c8f5;
 }
 
 .feature-toolbar {
