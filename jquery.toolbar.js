@@ -169,7 +169,7 @@ if ( typeof Object.create !== 'function' ) {
             location.html(content);
             location.find('.tool-item').on('click', function(event) {
                 event.preventDefault();
-                self.$elem.trigger('toolbarItemClick', this);
+                self.$elem.trigger('toolbarItemClick', event);
             });
         },
 
